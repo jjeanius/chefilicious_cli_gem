@@ -152,6 +152,8 @@ class ChefiliciousCliGem::CLI
         meal_type
         cooking_time
         allergen
+        cuisine
+        food_category
     end
   end
 end
@@ -159,20 +161,6 @@ end
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-  end
-
-end
 
 
 

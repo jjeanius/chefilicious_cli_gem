@@ -2,7 +2,6 @@ class ChefiliciousCliGem::CLI
 
   def call
     puts "Welcome to the Chefilicious!"
-    puts "Please enter a number"
     meal_type
     cooking_time
     allergen
@@ -13,13 +12,26 @@ class ChefiliciousCliGem::CLI
   end
 
   def meal_type
-    puts "What are you looking for?
+    puts "What are you looking for?"
+    puts "Please enter a number or type exit to leave the program
+
           1. Breakfast
           2. Lunch
           3. Dinner
-          4. Dessert"
-    input = gets.strip
-  end
+          4. Desert"
+    whiile input != "exit"
+      input = gets.strip
+      case input
+      when "1"
+        puts "Breakfast"
+      when "2"
+        puts "Lunch"
+      when "3"
+        puts "Dinner"
+      when "4"
+        puts "Yummy Desert!"
+      end
+    end
 
   def cooking_time
     puts "Please select your desire cooking time:
@@ -67,8 +79,7 @@ class ChefiliciousCliGem::CLI
     input = gets.strip
   end
 
-
-  end
+end
 
 
 

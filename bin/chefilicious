@@ -1,0 +1,5 @@
+#!/usr/bin/env ruby
+
+require_relative '../lib/chefilicious_cli_gem.rb'
+
+ChefiliciousCliGem::CLI.new.call

@@ -2,20 +2,12 @@ class ChefiliciousCliGem::CLI
 
   def call
     puts "Welcome to the Chefilicious!"
-    selections
+    puts "Please enter a number"
     meal_kits
-    goodbye
+    order_now
   end
 
-  def selections
-    puts "What are you looking for?  Please enter a number"
-    meal_type
-    puts "Please select your desire cooking time:"
-    cooking_time
-    puts "Are you allergic to any of the following ingredientes?"
-    allergens
-    puts "Please select a cuisine:"
-    cuisine
+
     puts "What do you like to cook?"
     food_category
     puts "Please make your selection:"
@@ -23,7 +15,7 @@ class ChefiliciousCliGem::CLI
   end
 
   def meal_type
-    puts "
+    puts "What are you looking for?
           1. Breakfast
           2. Lunch
           3. Dinner
@@ -32,7 +24,7 @@ class ChefiliciousCliGem::CLI
   end
 
   def cooking_time
-    puts "
+    puts "Please select your desire cooking time:
           1. Less than 20 minutes
           2. Between 21 to 45 minutes
           3. Between 45 to 60 minutes
@@ -41,7 +33,7 @@ class ChefiliciousCliGem::CLI
   end
 
   def allergens
-    puts "
+    puts "Are you allergic to any of the following ingredientes?
           1. Shellfish
           2. Dairy
           3. Egg
@@ -55,7 +47,8 @@ class ChefiliciousCliGem::CLI
   end
 
   def cuisine
-    puts "1. American
+    puts "Please select a cuisine:
+          1. American
           2. Asian (Chinese, Korean, Japanese, Thai, Vietnamese, Indian)
           3. Latin (Mexican)
           4. Mediterranean (Greek, Spanish, French, Italian, Middle Eastern)
@@ -65,7 +58,7 @@ class ChefiliciousCliGem::CLI
   end
 
   def food_category
-    puts "
+    puts "What do you like to cook?
           1. Meat (Beef, Chicken, Lamb, Pork)
           2. Fish
           3. Poultry

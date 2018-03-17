@@ -3,15 +3,13 @@ class ChefiliciousCliGem::CLI
   def call
     puts "Welcome to the Chefilicious!"
     puts "Please enter a number"
+    meal_type
+    cooking_time
+    allergen
+    cuisine
+    food_category
     meal_kits
     order_now
-  end
-
-
-    puts "What do you like to cook?"
-    food_category
-    puts "Please make your selection:"
-    meal_kits
   end
 
   def meal_type
@@ -32,7 +30,7 @@ class ChefiliciousCliGem::CLI
     input = gets.strip
   end
 
-  def allergens
+  def allergen
     puts "Are you allergic to any of the following ingredientes?
           1. Shellfish
           2. Dairy
@@ -69,15 +67,6 @@ class ChefiliciousCliGem::CLI
     input = gets.strip
   end
 
-    def meal_kits
-    end
-
-    def meal_description
-
-    end
-
-    def order_now
-    end
 
   end
 

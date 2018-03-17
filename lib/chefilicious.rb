@@ -1,7 +1,8 @@
 require_relative "./chefilicious_cli_gem/version"
 require_relative './chefilicious_cli_gem/cli'
 
-module ChefiliciousCliGem
+class ChefiliciousCliGem::CLI
+
   def meal_kits
   end
 

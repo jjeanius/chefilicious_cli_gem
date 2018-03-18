@@ -56,6 +56,7 @@ class ChefiliciousCliGem::CLI
         exit
       when "p"
         meal_type
+        cooking_time
     end
   end
 
@@ -88,7 +89,8 @@ class ChefiliciousCliGem::CLI
         exit
       when "p"
         cooking_time
-        #meal_type
+        meal_type
+        allergen
     end
   end
 
@@ -96,9 +98,9 @@ class ChefiliciousCliGem::CLI
     puts "Please select a cuisine:"
     puts "type exit for exiting and p for Previous Menu
           1. American
-          2. Asian (Chinese, Korean, Japanese, Thai, Vietnamese, Indian)
-          3. Latin (Mexican)
-          4. Mediterranean (Greek, Spanish, French, Italian, Middle Eastern)"
+          2. Asian"  #(Chinese, Korean, Japanese, Thai, Vietnamese, Indian)
+         "3. Latin"  #(Mexican)
+         "4. Mediterranean" #(Greek, Spanish, French, Italian, Middle Eastern)"
     input = gets.strip
 
     case input
@@ -114,8 +116,9 @@ class ChefiliciousCliGem::CLI
         exit
       when "p"
         allergen
-        ##cooking_time
-        ##meal_type
+        cooking_time
+        meal_type
+        cuisine
     end
   end
 
@@ -147,25 +150,18 @@ class ChefiliciousCliGem::CLI
         exit
       when "p"
         cuisine
-        #allergen
-        #cooking_time
-        #meal_type
+        allergen
+        cooking_time
+        meal_type
+        food_category
     end
   end
 end
-
-
-
-
-
-
-
-
 
     #* What are you looking for:  (list Type of Meal, Cooking Time, Allergens)
     #* User makes selections on meal type, cooking time, allergens
     #* What do you like to eat?   (list of Cuisine and food categories)
     #* User makes selections on the cuisine and meal Category
-    #* The application will shows a list of meal kits (in column format) from all 3 companies with price, cooking time, and rating
+    #* The application will shows a list of meal kits (in column format) from all companies with price, cooking time, and rating
     #* User can select the dish and it will provide more information about the dish
     #* There will be an "Order Now" button and it will let the user know that he/she is leaving the Chefilicious website, and he/she will be connected to the company's website

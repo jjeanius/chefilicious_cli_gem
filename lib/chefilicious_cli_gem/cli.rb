@@ -13,8 +13,8 @@ class ChefiliciousCliGem::CLI
   end
 
   def list_selection
-    meal_kits
-    #@meal_kits = ChefiliciousCliGem::Meal_Kits.selection
+    @meal_kits = ChefiliciousCliGem::Meal_Kits.selection
+
   end
 
   def meal_type
@@ -37,7 +37,7 @@ class ChefiliciousCliGem::CLI
           puts "Yummy Desert!"
         when "exit"
           exit
-        else
+        else "5"
           "Please enter a valid selection"
       end
     end

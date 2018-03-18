@@ -7,8 +7,14 @@ class ChefiliciousCliGem::CLI
     allergen
     cuisine
     food_category
+    list_selection
+    #meal_kits
+    #order_now
+  end
+
+  def list_selection
     meal_kits
-    order_now
+    #@meal_kits = ChefiliciousCliGem::Meal_Kits.selection
   end
 
   def meal_type
@@ -31,6 +37,8 @@ class ChefiliciousCliGem::CLI
           puts "Yummy Desert!"
         when "exit"
           exit
+        else
+          "Please enter a valid selection"
       end
     end
 
@@ -57,6 +65,8 @@ class ChefiliciousCliGem::CLI
       when "p"
         meal_type
         cooking_time
+      else
+        "Please enter a valid selection"
     end
   end
 
@@ -91,6 +101,8 @@ class ChefiliciousCliGem::CLI
         cooking_time
         meal_type
         allergen
+      else
+        "Please enter a valid selection"
     end
   end
 
@@ -119,6 +131,8 @@ class ChefiliciousCliGem::CLI
         cooking_time
         meal_type
         cuisine
+      else
+        "Please enter a valid selection"
     end
   end
 
@@ -154,6 +168,9 @@ class ChefiliciousCliGem::CLI
         cooking_time
         meal_type
         food_category
+      else
+        "Please enter a valid selection"
+
     end
   end
 end

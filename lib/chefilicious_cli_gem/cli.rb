@@ -56,7 +56,6 @@ class ChefiliciousCliGem::CLI
         exit
       when "p"
         meal_type
-        cooking_time
     end
   end
 
@@ -88,9 +87,8 @@ class ChefiliciousCliGem::CLI
       when "exit"
         exit
       when "p"
-        meal_type
         cooking_time
-        allergen
+        #meal_type
     end
   end
 
@@ -115,10 +113,9 @@ class ChefiliciousCliGem::CLI
       when "exit"
         exit
       when "p"
-        meal_type
-        cooking_time
         allergen
-        Cuisine
+        ##cooking_time
+        ##meal_type
     end
   end
 
@@ -149,18 +146,13 @@ class ChefiliciousCliGem::CLI
       when "exit"
         exit
       when "p"
-        meal_type
-        cooking_time
-        allergen
         cuisine
-        food_category
+        #allergen
+        #cooking_time
+        #meal_type
     end
   end
 end
-
-
-
-
 
 
 

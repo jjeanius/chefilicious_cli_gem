@@ -4,8 +4,8 @@ A command line interface for a non-subscription meal kit company (such as Chef D
 
 * The application will scrape the information from various company websites and allow the consumer to see product information and make a selection.
 
-* Comparing the following categories
-Food, Price, Rating, Calorie Count, Delivery Date
+* The application will collect the following information:
+Food, Price, Allergens, Serving_Size, Skill, cooking_time
 
 * Type of Meal:
 Breakfast, Lunch, Dinner, Dessert, Date Night

@@ -5,7 +5,7 @@ A command line interface for a non-subscription meal kit company (such as Chef D
 * The application will scrape the information from various company websites and allow the consumer to see product information and make a selection.
 
 * The application will collect the following information:
-Food, Price, Allergens, Serving_Size, Skill, cooking_time
+Food, Price, Allergens, Serving_Size, Skill, Cooking_time
 
 * Type of Meal:
 Breakfast, Lunch, Dinner, Dessert, Date Night
@@ -47,3 +47,15 @@ CLI:
 * The application will shows a list of meal kits (in column format) from all 3 companies with price, cooking time, and rating
 * User can select the dish and it will provide more information about the dish
 * There will be an "Order Now" button and it will let the user know that he/she is leaving the Chefilicious website, and he/she will be connected to the company's website
+
+case input
+  when "1"
+    puts "Breakfast"
+  when "2"
+    puts "Lunch"
+  when "3"
+    puts "Dinner"
+  when "4"
+    puts "Yummy Desert!"
+  when "exit"
+    exit

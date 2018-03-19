@@ -24,7 +24,7 @@ class ChefiliciousCliGem::CLI
           2. Lunch
           3. Dinner
           4. Desert"
-      input = gets.strip
+      input = gets.strip.downcase
 
       case input
         when "1"
@@ -34,11 +34,12 @@ class ChefiliciousCliGem::CLI
         when "3"
           puts "Dinner"
         when "4"
-          puts "Yummy Desert!"
+          puts "Desert!"
         when "exit"
           exit
-        else "5"
-          "Please enter a valid selection"
+        else
+          puts "Please enter a valid selection"
+          meal_type
       end
     end
 
@@ -49,7 +50,7 @@ class ChefiliciousCliGem::CLI
           2. Between 21 to 45 minutes
           3. Between 45 to 60 minutes
           4. More than 60 Minutes"
-    input = gets.strip
+    input = gets.strip.downcase
 
     case input
       when "1"
@@ -59,14 +60,15 @@ class ChefiliciousCliGem::CLI
       when "3"
         puts "Between 45 to 60 minutes"
       when "4"
-        puts "More than 60 Minutes"
+        puts "More than 60 minutes"
       when "exit"
         exit
       when "p"
+        puts "Previous Menu"
         meal_type
-        cooking_time
       else
-        "Please enter a valid selection"
+        puts "Please enter a valid selection"
+        cooking_time
     end
   end
 
@@ -80,7 +82,7 @@ class ChefiliciousCliGem::CLI
           5. Soy
           6. Wheat
           7. No Allergens"
-    input = gets.strip
+    input = gets.strip.downcase
 
     case input
       when "1"
@@ -95,14 +97,17 @@ class ChefiliciousCliGem::CLI
         puts "Soy"
       when "6"
         puts "Wheat"
+      when "7"
+        puts "No Allergen"
       when "exit"
         exit
       when "p"
+        puts "Previous Menu"
         cooking_time
         meal_type
-        allergen
       else
-        "Please enter a valid selection"
+        puts "Please enter a valid selection"
+        allergen
     end
   end
 
@@ -113,7 +118,7 @@ class ChefiliciousCliGem::CLI
           2. Asian"  #(Chinese, Korean, Japanese, Thai, Vietnamese, Indian)
          "3. Latin"  #(Mexican)
          "4. Mediterranean" #(Greek, Spanish, French, Italian, Middle Eastern)"
-    input = gets.strip
+    input = gets.strip.downcase
 
     case input
       when "1"
@@ -127,12 +132,13 @@ class ChefiliciousCliGem::CLI
       when "exit"
         exit
       when "p"
+        puts "Previous Menu"
         allergen
         cooking_time
         meal_type
-        cuisine
       else
-        "Please enter a valid selection"
+        puts "Please enter a valid selection"
+        cuisine
     end
   end
 
@@ -145,7 +151,7 @@ class ChefiliciousCliGem::CLI
           4. Vegetable
           5. Grains/Pasta
           6. Sweets"
-    input = gets.strip
+    input = gets.strip.downcase
 
     case input
       when "1"
@@ -163,14 +169,14 @@ class ChefiliciousCliGem::CLI
       when "exit"
         exit
       when "p"
+
         cuisine
         allergen
         cooking_time
         meal_type
-        food_category
       else
-        "Please enter a valid selection"
-
+        puts "Please enter a valid selection"
+        food_category
     end
   end
 end

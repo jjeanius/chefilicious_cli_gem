@@ -1,3 +1,6 @@
+require 'nokogiri'
+require 'pry'
+
 require_relative "./chefilicious_cli_gem/version"
 require_relative './chefilicious_cli_gem/meal_kits'
 require_relative './chefilicious_cli_gem/cli'

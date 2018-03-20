@@ -2,7 +2,7 @@ class ChefiliciousCliGem::Meal_Kits
   attr_accessor :name, :price, :skill_level, :cooking_time, :allergen, :url
 
   def self.selection
-    puts "listing meal_kits"
+    SEF.scrape_mealkits
     # return a bunch of instances meal_kits
     #@meal_kits = ChefiliciousCliGem::meal_kit.selection
 
@@ -31,4 +31,19 @@ class ChefiliciousCliGem::Meal_Kits
     meal_kit_3.url = "http://www.chefday.com/recipes"
   end
 
+
+  def self.scrape_mealkits
+    mealkits = []
+    # Go to Chef'D, Chefday, Fresh_Direct find the information
+    # extract the properties
+    # instantiate meal_kit
+
+    meal_kits << self.scrape_chef_d
+    meal_kits << self.scrape_chefday
+    meal_kits << self.scrape_fresh_direct
+
+  meal_kits
 end
+
+def self.scrape_chef_d
+  doc = nokogiri::HTML(open("https://www.chefd.com/collections/all?sort_by=best-selling"))

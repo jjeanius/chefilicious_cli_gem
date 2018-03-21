@@ -7,7 +7,7 @@ class ChefiliciousCliGem::CLI
     allergen
     cuisine
     food_category
-    list_selection
+    selection
     #meal_kits
     #order_now
   end
@@ -179,6 +179,20 @@ class ChefiliciousCliGem::CLI
         food_category
     end
   end
+
+  def meal_kits
+  end
+
+  def meal_description
+
+  end
+
+  def order_now
+  end
+
+
+
+
 end
 
     #* What are you looking for:  (list Type of Meal, Cooking Time, Allergens)

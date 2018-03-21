@@ -3,17 +3,13 @@ class ChefiliciousCliGem::Meal_Kits
 
   def self.scrape_meal_kits
     meal_kits = []
-
-
-
-
     # Go to Chef'D, Chefday, Fresh_Direct find the information
     # extract the properties
     # instantiate meal_kit
 
-    #meal_kits << self.scrape_chef_d
-    #meal_kits << self.scrape_chefday
-    #meal_kits << self.scrape_fresh_direct
+    meal_kits << self.scrape_chef_d
+    meal_kits << self.scrape_chefday
+    meal_kits << self.scrape_fresh_direct
 
   meal_kits
   self.scrape_chef_d
@@ -29,12 +25,14 @@ end
       meal_kit_1.name =
       meal_kit_1.price =
       meal_kit_1.skill_level =
+
+      meal_kit_1.meal_type =
       meal_kit_1.cooking_time =
       meal_kit_1.allergen =
-
-
-    binding.pry.
-
+      meal_kit_1.cuisine =
+      meal_kit_1.food_category =
+    binding.pry
+    end
   end
 
   def self.scrape_fresh_direct
@@ -46,9 +44,14 @@ end
       meal_kit_2.name =
       meal_kit_2.price =
       meal_kit_2.skill_level =
+
+      meal_kit_2.meal_type =
       meal_kit_2.cooking_time =
       meal_kit_2.allergen =
+      meal_kit_2.cuisine =
+      meal_kit_2.food_category =
   end
+end
 
   def self.scrape_chefday
     doc = Nokogiri::HTML(open("http://www.chefday.com/recipes"))
@@ -58,8 +61,13 @@ end
     meal_kit_3.name =
     meal_kit_3.price =
     meal_kit_3.skill_level =
+
+    meal_kit_3.meal_type =
     meal_kit_3.cooking_time =
     meal_kit_3.allergen =
+    meal_kit_3.cuisine =
+    meal_kit_3.food_category =
+    end
   end
 
 end

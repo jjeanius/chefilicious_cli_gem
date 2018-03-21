@@ -14,7 +14,6 @@ class ChefiliciousCliGem::CLI
 
   def list_selection
     @meal_kits = ChefiliciousCliGem::Meal_Kits.scrape_meal_kits
-
   end
 
   def meal_type
@@ -117,7 +116,7 @@ class ChefiliciousCliGem::CLI
           1. American
           2. Asian
           3. Latin
-         4. Mediterranean"
+          4. Mediterranean"
     input = gets.strip.downcase
 
     case input

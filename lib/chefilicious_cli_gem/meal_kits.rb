@@ -12,18 +12,19 @@ class ChefiliciousCliGem::Meal_Kits
     #meal_kits << self.scrape_fresh_direct
 
   meal_kits
-  self.scrape_chef_d
-  self.scrape_fresh_direct
-  self.scrape_chefday
+  self.scrape_chef_d.css
+  self.scrape_fresh_direct.css
+  self.scrape_chefday.css
 end
 
   def self.scrape_chef_d
     doc = Nokogiri::HTML(open("https://www.chefd.com/collections/all?sort_by=best-selling"))
-    meal_kits_1 = doc.css("#uniform grid--view-items").text.strip
-    #meal_kits_1.each do|meal_kit|
-      puts doc.css
-      binding.pry
+    #doc.css(".div.grid.grid--uniform grid--view_items product-list").text.strip
+    meal_kits_1 = doc.css("div.grid.grid--uniform.grid--view-items.product-list").text.strip
+    binding.pry
+    meal_kits_chef_d = []
 
+    meal_kits_1.each do|chef_d|
       #meal_kit_1.name =
       #meal_kit_1.price =
       #meal_kit_1.skill_level =
@@ -32,7 +33,7 @@ end
       #meal_kit_1.allergen =
       #meal_kit_1.cuisine =
       #meal_kit_1.food_category =
-    #end
+    end
   end
 
   def self.scrape_fresh_direct

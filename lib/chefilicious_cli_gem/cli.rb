@@ -7,13 +7,13 @@ class ChefiliciousCliGem::CLI
     allergen
     cuisine
     food_category
-    selection
+    list_selection
     #meal_kits
     #order_now
   end
 
   def list_selection
-    @meal_kits = ChefiliciousCliGem::Meal_Kits.selection
+    @meal_kits = ChefiliciousCliGem::Meal_Kits.scrape_meal_kits
 
   end
 
@@ -115,9 +115,9 @@ class ChefiliciousCliGem::CLI
     puts "Please select a cuisine:"
     puts "type exit for exiting and p for Previous Menu
           1. American
-          2. Asian"  #(Chinese, Korean, Japanese, Thai, Vietnamese, Indian)
-         "3. Latin"  #(Mexican)
-         "4. Mediterranean" #(Greek, Spanish, French, Italian, Middle Eastern)"
+          2. Asian
+          3. Latin
+         4. Mediterranean"
     input = gets.strip.downcase
 
     case input

@@ -11,38 +11,37 @@ class ChefiliciousCliGem::Meal_Kits
     #meal_kits << self.scrape_chefday
     #meal_kits << self.scrape_fresh_direct
 
-  meal_kits
-  self.scrape_chef_d.css
-  self.scrape_fresh_direct.css
-  self.scrape_chefday.css
+    meal_kits
+    self.scrape_chef_d.css
+    self.scrape_fresh_direct.css
+    self.scrape_chefday.css
 end
 
   def self.scrape_chef_d
     doc = Nokogiri::HTML(open("https://www.chefd.com/collections/all?sort_by=best-selling"))
-    meal_kits_chef_d = doc.css("div.grid.grid--uniform.grid--view-items.product-list")
-    binding.pry
-    meal_kits_chef_d.each do|mealkit_chef_d|
+    meal_kits_chef_d = doc.css("div.grid.grid--uniform.grid--view-items.product-list div.grid__item.small--one-half.medium-up--one-third.product-item")
+      meal_kits_chef_d.each do|mealkit_chef_d|
+        binding.pry
       chef_d = []
-      chef_d << {
-      mealkit_chef_d.name = mealkit_chef_d.css(".data-name").text
+      #chef_d << {
+      mealkit_chef_d.name = mealkit_chef_d.css("div.grid-view-item")
       mealkit_chef_d.price = mealkit_chef_d.css(".grid--view-item_meta").text
       mealkit_chef_d.skill_level = mealkit_chef_d.css(".").text
-      }
+      #}
+    end
+  end
 
       def self.scrape_chef_d_meal_description
         doc = Nokogiri::HTML(open("https://www.chefd.com/collections/all?sort_by=best-selling"))
-        meal_kits_chef_d = doc.css("div.grid.grid--uniform.grid--view-items.product-list")
-        binding.pry
-        meal_kits_chef_d.each do|mealkit_chef_d|
+        meal_kits_chef_d = doc.css("grid__item small--one-half medium-up--one-third product-item")
 
-
-
-      mealkit_chef_d.meal_type =
-      mealkit_chef_d.cooking_time =
-      mealkit_chef_d.allergen =
-      mealkit_chef_d.cuisine =
-      mealkit_chef_d.food_category =
-    end
+        #meal_kits_chef_d.each do|mealkit_chef_d|
+          #mealkit_chef_d.meal_type =
+          #mealkit_chef_d.cooking_time =
+          #mealkit_chef_d.allergen =
+          #mealkit_chef_d.cuisine =
+          #mealkit_chef_d.food_category =
+    #end
   end
 
   def self.scrape_fresh_direct

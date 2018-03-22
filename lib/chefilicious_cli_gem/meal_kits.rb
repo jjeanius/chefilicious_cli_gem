@@ -19,20 +19,18 @@ end
 
   def self.scrape_chef_d
     doc = Nokogiri::HTML(open("https://www.chefd.com/collections/all?sort_by=best-selling"))
-    #doc.css(".div.grid.grid--uniform grid--view_items product-list").text.strip
-    meal_kits_1 = doc.css("div.grid.grid--uniform.grid--view-items.product-list").text.strip
+    meal_kits_chef_d = doc.css("div.grid.grid--uniform.grid--view-items.product-list")
     binding.pry
-    meal_kits_chef_d = []
-
-    meal_kits_1.each do|chef_d|
-      #meal_kit_1.name =
-      #meal_kit_1.price =
-      #meal_kit_1.skill_level =
-      #meal_kit_1.meal_type =
-      #meal_kit_1.cooking_time =
-      #meal_kit_1.allergen =
-      #meal_kit_1.cuisine =
-      #meal_kit_1.food_category =
+    chef_d = []
+    meal_kits_chef_d.each do|mealkit_chef_d|
+      mealkit_chef_d.name =
+      mealkit_chef_d.price =
+      mealkit_chef_d.skill_level =
+      mealkit_chef_d.meal_type =
+      mealkit_chef_d.cooking_time =
+      mealkit_chef_d.allergen =
+      mealkit_chef_d.cuisine =
+      mealkit_chef_d.food_category =
     end
   end
 

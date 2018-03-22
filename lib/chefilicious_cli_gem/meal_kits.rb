@@ -21,11 +21,22 @@ end
     doc = Nokogiri::HTML(open("https://www.chefd.com/collections/all?sort_by=best-selling"))
     meal_kits_chef_d = doc.css("div.grid.grid--uniform.grid--view-items.product-list")
     binding.pry
-    chef_d = []
     meal_kits_chef_d.each do|mealkit_chef_d|
-      mealkit_chef_d.name =
-      mealkit_chef_d.price =
-      mealkit_chef_d.skill_level =
+      chef_d = []
+      chef_d << {
+      mealkit_chef_d.name = mealkit_chef_d.css(".data-name").text
+      mealkit_chef_d.price = mealkit_chef_d.css(".grid--view-item_meta").text
+      mealkit_chef_d.skill_level = mealkit_chef_d.css(".").text
+      }
+
+      def self.scrape_chef_d_meal_description
+        doc = Nokogiri::HTML(open("https://www.chefd.com/collections/all?sort_by=best-selling"))
+        meal_kits_chef_d = doc.css("div.grid.grid--uniform.grid--view-items.product-list")
+        binding.pry
+        meal_kits_chef_d.each do|mealkit_chef_d|
+
+
+
       mealkit_chef_d.meal_type =
       mealkit_chef_d.cooking_time =
       mealkit_chef_d.allergen =

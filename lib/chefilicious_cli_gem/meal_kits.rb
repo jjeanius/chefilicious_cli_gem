@@ -23,24 +23,24 @@ end
       meal_kits_chef_d.each do|mealkit_chef_d|
         binding.pry
       chef_d = []
-      #chef_d << {
+      chef_d << {
       mealkit_chef_d.name = mealkit_chef_d.css("div.grid-view-item")
-      mealkit_chef_d.price = mealkit_chef_d.css(".grid--view-item_meta").text
-      mealkit_chef_d.skill_level = mealkit_chef_d.css(".").text
-      #}
+      mealkit_chef_d.price = mealkit_chef_d.css("div.grid--view-item_meta")
+      mealkit_chef_d.skill_level = mealkit_chef_d.css("div.data-skill_level")
+      }
     end
   end
 
       def self.scrape_chef_d_meal_description
         doc = Nokogiri::HTML(open("https://www.chefd.com/collections/all?sort_by=best-selling"))
-        meal_kits_chef_d = doc.css("grid__item small--one-half medium-up--one-third product-item")
+        meal_kits_chef_d = doc.css("grid__item.small--one-half.medium-up--one-third product-item")
 
-        #meal_kits_chef_d.each do|mealkit_chef_d|
-          #mealkit_chef_d.meal_type =
-          #mealkit_chef_d.cooking_time =
-          #mealkit_chef_d.allergen =
-          #mealkit_chef_d.cuisine =
-          #mealkit_chef_d.food_category =
+        meal_kits_chef_d.each do|mealkit_desc_chef_d|
+          mealkit_desc_chef_d.meal_type = mealkit_desc_chef_d.css("data-type_of_meal")
+          mealkit_desc_chef_d.cooking_time = mealkit_desc_chef_d.css("data-cooking_time")
+          mealkit_desc_chef_d.allergen = mealkit_desc_chef_d.css("data-allergens")
+          mealkit_desc_chef_d.cuisine = mealkit_desc_chef_d.css("data-allergens")
+          mealkit_desc_chef_d.food_category = mealkit_desc_chef_d.css("data-proteins")
     #end
   end
 

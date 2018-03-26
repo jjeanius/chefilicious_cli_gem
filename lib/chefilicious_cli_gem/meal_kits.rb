@@ -1,50 +1,32 @@
 class ChefiliciousCliGem::Meal_Kits
   attr_accessor :name, :price, :skill_level, :cooking_time, :allergen, :url, :meal_kits
+  @@all = []
 
   def self.scrape_meal_kits
-    meal_kits = []
+
     # Go to Chef'D, Chefday, Fresh_Direct find the information
     # extract the properties
     # instantiate meal_kit
 
-    meal_kits_chef_d << self.scrape_chef_d
-    meal_kits_chefday << self.scrape_chefday
-    #meal_kits << self.scrape_fresh_direct
-
-    meal_kits
     self.scrape_chef_d
     self.scrape_chefday
-
-    #self.scrape_fresh_direct
-
 end
 
   def self.scrape_chef_d
     doc = Nokogiri::HTML(open("https://www.chefd.com/collections/all?sort_by=best-selling"))
     meal_kits_chef_d = doc.css("div.grid.grid--uniform.grid--view-items.product-list div.grid__item.small--one-half.medium-up--one-third.product-item")
     meal_kits_chef_d.each do|mealkit_chef_d|
-      #  binding.pry
-    chef_d = []
-      # chef_d << {
-      mealkit_chef_d.name = mealkit_chef_d.css("a").attribute("data-name").value
-      mealkit_chef_d.price = mealkit_chef_d.css("button").text.gsub(/\n/,"").strip  # need to work on spacing
-      mealkit_chef_d.skill_level = mealkit_chef_d.css("div.data-skill_level")   # Does nt work
-      mealkit_chef_d.url = mealkit_chef_d.css("a").attribute("href")
-      # }
-    end
-  end
-
-      def self.scrape_chef_d_meal_description
-        doc = Nokogiri::HTML(open("https://www.chefd.com/collections/all?sort_by=best-selling"))
-        meal_kits_chef_d = doc.css("div.grid__item.small--one-half.medium-up--one-third.product-item")
-
-        meal_kits_chef_d.each do|mealkit_desc_chef_d|
-          binding.pry
-          mealkit_desc_chef_d.meal_type = mealkit_desc_chef_d.css(".data-type_of_meal")
-          mealkit_desc_chef_d.cooking_time = mealkit_chef_d.css("span").text.strip  # Need to remove "Net Carbs940For 2 For 4 "
-          mealkit_desc_chef_d.allergen = mealkit_desc_chef_d.css(".data-allergens")
-          mealkit_desc_chef_d.cuisine = mealkit_desc_chef_d.css(".data-allergens")
-          mealkit_desc_chef_d.food_category = mealkit_desc_chef_d.css(".data-proteins")
+      mealkit = self.new
+      mealkit.name = mealkit_chef_d.css("a").attribute("data-name").value
+      mealkit.price = mealkit_chef_d.css("button").text.gsub(/\n/,"").strip  # need to work on spacing
+      mealkit.skill_level = mealkit_chef_d.attribute("data-skill_level").value
+      mealkit.url = "https://www.chefd.com#{mealkit_chef_d.css('a').attribute('href').text.strip}"
+      mealkit.meal_type = mealkit_chef_d.attribute("data-type_of_meal")
+      mealkit.cooking_time = mealkit_chef_d.css("span").text.strip  # Need to remove "Net Carbs940For 2 For 4 "
+      mealkit.allergen = mealkit_chef_d.attribute("data-allergens")
+      mealkit.cuisine = mealkit_chef_d.attribute("data-cuisine")
+      mealkit.food_category = mealkit_chef_d.attribute("data-proteins")
+      @@all << mealkit_desc
     end
   end
 

@@ -1,5 +1,5 @@
 class ChefiliciousCliGem::Meal_Kits
-  attr_accessor :name, :price, :skill_level, :cooking_time, :allergen, :url, :meal_kits
+  attr_accessor :name, :price, :skill_level, :cooking_time, :allergen, :url, :meal_kits, :meal_type, :cuisine, :food_category
   @@all = []
 
   def self.scrape_meal_kits
@@ -26,7 +26,7 @@ end
       mealkit.allergen = mealkit_chef_d.attribute("data-allergens")
       mealkit.cuisine = mealkit_chef_d.attribute("data-cuisine")
       mealkit.food_category = mealkit_chef_d.attribute("data-proteins")
-      @@all << mealkit_desc
+      @@all << mealkit
     end
   end
 

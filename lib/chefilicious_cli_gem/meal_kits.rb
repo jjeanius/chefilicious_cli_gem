@@ -7,13 +7,14 @@ class ChefiliciousCliGem::Meal_Kits
     # extract the properties
     # instantiate meal_kit
 
-    #meal_kits_chef_d << self.scrape_chef_d
-    #meal_kits_chefday << self.scrape_chefday
+    meal_kits_chef_d << self.scrape_chef_d
+    meal_kits_chefday << self.scrape_chefday
     #meal_kits << self.scrape_fresh_direct
 
     meal_kits
     self.scrape_chef_d
     self.scrape_chefday
+
     #self.scrape_fresh_direct
 
 end
@@ -21,7 +22,7 @@ end
   def self.scrape_chef_d
     doc = Nokogiri::HTML(open("https://www.chefd.com/collections/all?sort_by=best-selling"))
     meal_kits_chef_d = doc.css("div.grid.grid--uniform.grid--view-items.product-list div.grid__item.small--one-half.medium-up--one-third.product-item")
-      meal_kits_chef_d.each do|mealkit_chef_d|
+    meal_kits_chef_d.each do|mealkit_chef_d|
       #  binding.pry
     chef_d = []
       # chef_d << {

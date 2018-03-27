@@ -2,7 +2,74 @@ class ChefiliciousCliGem::CLI
 
   def call
     puts "Welcome to the Chefilicious!"
-    meal_type
+    puts "A place where your culinary experience comes to life!"
+    start
+  end
+
+  def start
+    puts "Please press any key to get started"
+    puts ""
+    input = gets.strip
+
+    print_meal_kits(input)
+
+    puts ""
+    puts "What would you like more informaiton on?"
+    inputs = get.strip
+
+    meal_kits = ChefiliciousCliGem::Meal_Kits.scrape_meal_kits
+l
+    print_meal_kit(meal_kit)
+
+    puts ""
+    puts "Would you like to see another meal_kit?  Enter Y or N"
+
+    input = gets.strip.downcase
+    if input == "y"
+      start
+    else
+      puts ""
+      puts " Thank You! Have a wonderful day!"
+      exit
+    end
+  end
+
+    def print_meal_kit(meal_kit)
+      puts ""
+    puts "----------- #{meal_kit.name} - #{restaurant.position} -----------"
+    puts ""
+    puts "Location:           #{restaurant.location}"
+    puts "Head Chef:          #{restaurant.head_chef}"
+    puts "Style of Food:      #{restaurant.food_style}"
+    puts "Standout Dish:      #{restaurant.best_dish}"
+    puts "Contact:            #{restaurant.contact}"
+    puts "Website:            #{restaurant.website_url}"
+    puts ""
+    puts "---------------Description--------------"
+    puts ""
+    puts "#{restaurant.description}"
+    puts ""
+  end
+
+  def print_meal_kit(from_number)
+    puts ""
+    puts "---------- Restaurants #{from_number} - #{from_number+9} ----------"
+    puts ""
+    WorldsBestRestaurants::Restaurant.all[from_number-1, 10].each.with_index(from_number) do |restaurant, index|
+      puts "#{index}. #{restaurant.name} - #{restaurant.location}"
+    end
+  end
+
+end
+
+
+
+
+
+
+
+
+        meal_type
     cooking_time
     allergen
     cuisine
@@ -13,7 +80,6 @@ class ChefiliciousCliGem::CLI
   end
 
   def list_selection
-    @meal_kits = ChefiliciousCliGem::Meal_Kits.scrape_meal_kits
   end
 
   def meal_type

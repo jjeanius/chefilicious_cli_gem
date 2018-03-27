@@ -1,5 +1,5 @@
 class ChefiliciousCliGem::Meal_Kits
-  attr_accessor :name, :price, :skill_level, :cooking_time, :allergen, :url, :meal_kits, :meal_type, :cuisine, :food_category
+  attr_accessor :name, :price, :skill_level, :cooking_time, :allergen, :url, :meal_kits, :meal_type, :cuisine, :food_category, :img
   @@all = []
 
   def self.scrape_meal_kits

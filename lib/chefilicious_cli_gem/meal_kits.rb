@@ -26,6 +26,7 @@ end
       mealkit.allergen = mealkit_chef_d.attribute("data-allergens")
       mealkit.cuisine = mealkit_chef_d.attribute("data-cuisine")
       mealkit.food_category = mealkit_chef_d.attribute("data-proteins")
+      mealkit.description = mealkit_chef_d.css("p").attrib"description")
       @@all << mealkit
     end
   end
@@ -50,23 +51,6 @@ end
     end
   end
 
-  #def self.scrape_fresh_direct
-  #  doc = Nokogiri::HTML(open("https://www.freshdirect.com/browse.jsp?pageType=browse&id=meals_kits_meals"))
-
-  #    doc.css(div mealkits_products_list).text
-  #    list.meal_kits_2 = doc.css(div ).text
-  #    list.meal_kits_2.each do |meal_kit|
-      #  meal_kit_2.name =
-      #  meal_kit_2.price =
-      #  meal_kit_2.skill_level =
-
-      #  meal_kit_2.meal_type =
-      #  meal_kit_2.cooking_time =
-      #  meal_kit_2.allergen =
-      #  meal_kit_2.cuisine =
-      #  meal_kit_2.food_category =
-#  end
-#end
 
 
 end

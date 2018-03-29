@@ -1,6 +1,8 @@
 class ChefiliciousCliGem::CLI
 
   def call
+    @meal_kits = ChefiliciousCliGem::Meal_Kits.scrape_all
+    puts ""
     puts "Welcome to the Chefilicious!"
     puts "A place where your culinary experience comes to life!"
       start
@@ -8,6 +10,7 @@ class ChefiliciousCliGem::CLI
     end
 
     def start
+      puts ""
       puts "Please press any key to get started"
       puts ""
       input = gets.strip
@@ -35,11 +38,11 @@ class ChefiliciousCliGem::CLI
       end
 
       def display_meal_kits
-        @meal_kits = ChefiliciousCliGem::Meal_Kits.scrape_meal_kits
         puts ""
         puts "-------------- Lets' Revolutionize Your Dinner Routine! ----------------"
         puts ""
-        ChefiliciousCliGem::Meal_Kits.all[from_number-1, 10].each.with_index(from_number) do |mealkit, index|
+        binding.pry
+        ChefiliciousCliGem::Meal_Kits.each with_index(from_number-1, 10) do |mealkit, index|
         puts "#{index}. #{mealkit.name} - #{mealkit.cooking_time} - #{mealkit.skill_level} - #{mealkit.cuisine} - #{mealkit.price}"
         puts "please select a Meal Kit:"
         puts ""
@@ -50,7 +53,6 @@ class ChefiliciousCliGem::CLI
      end
 
        def display_meal_kit_description(meal_kit)
-         @meal_kits = ChefiliciousCliGem::Meal_Kits.scrape_meal_kits
          puts ""
          puts "----------- #{mealkit.name} - #{mealkit.skill_level} -----------"
          puts ""
@@ -70,7 +72,7 @@ class ChefiliciousCliGem::CLI
      end
 
     def display_chefs(chefd)
-      @chefs = ChefiliciousCliGem::Meal_Kits.scrape_chefd_chefs
+
      puts ""
      puts "---------- Our Famous Chefs ----------"
      puts ""
@@ -84,7 +86,7 @@ class ChefiliciousCliGem::CLI
     end
 
     def display_chef_bio
-      @meal_kits_chef = ChefiliciousCliGem::Meal_Kits.scrape_chefd_chefs
+
       puts ""
       puts ""
       puts "---------------About #{mealkit_chef.chefname}--------------"

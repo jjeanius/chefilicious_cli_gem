@@ -2,7 +2,7 @@ class ChefiliciousCliGem::Meal_Kits
   attr_accessor :name, :price, :skill_level, :cooking_time, :allergen, :url, :meal_kits, :meal_type, :cuisine, :food_category, :img
   @@all = []
 
-  def self.scrape_meal_kits
+  def self.scrape_all
 
     # Go to Chef'D, Chefday, Fresh_Direct find the information
     # extract the properties

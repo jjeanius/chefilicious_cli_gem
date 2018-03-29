@@ -1,26 +1,14 @@
 Chefilicious
 
-A command line interface for a non-subscription meal kit company (such as Chef D, Fresh Direct, Chefday...etc), which allow the consumer to see the meal kit information in one website.
+A command line interface that list 50 top meal kits from a non-subscription company (such as Chef D, Fresh Direct, Chefday...etc).  
 
-* The application will scrape the information from various company websites and allow the consumer to see product information and make a selection.
+The application will allow the user to see the following information:
 
-* The application will collect the following information:
-Food, Price, Allergens, Serving_Size, Skill, Cooking_time
+* A list of 50 meal kits information and allow the user to make a product selection for each meal kit.
 
-* Type of Meal:
-Breakfast, Lunch, Dinner, Dessert, Date Night
+* The application will scrape the information from a company website and it will have a link to connect the user to the website.
 
-* Cooking Time:
-< 10 Minutes, 10 - 20 Minutes, 20 - 45 Minutes, 45 -  60 minutes, >60 Minutes
-
-* Allergens:
-Shellfish, Dairy, Egg, Fish, Peanut, Soy, Tree Nut, Wheat
-
-* Cuisine:
-American, Asian(Chinese, Korean, Japanese, Thai, Vietnamese), Latin(Mexican, Spanish), Mediterranean, Indian, Greek, French, Italian, Middle Eastern, South and All Cuisine
-
-*  Food Categories:
-Meat (Beef, Chicken, Lamb, Pork), Fish, Poultry, Vegetable, Grains/Pasta, Sweets and Special Dietary Needs
+* The application will also provide a list of chefs and the user can select each chef for more
 
 * "Order Now" button will link to the company's websites for the specific dishes
 

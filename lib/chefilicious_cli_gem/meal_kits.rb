@@ -9,7 +9,8 @@ class ChefiliciousCliGem::Meal_Kits
     # instantiate meal_kit
 
     self.scrape_chef_d
-    self.scrape_chefday
+    self.scrape_chefd_chefs
+    #self.scrape_chefday
 end
 
   def self.scrape_chef_d
@@ -26,7 +27,7 @@ end
       mealkit.allergen = mealkit_chef_d.attribute("data-allergens")
       mealkit.cuisine = mealkit_chef_d.attribute("data-cuisine")
       mealkit.food_category = mealkit_chef_d.attribute("data-proteins")
-      mealkit.description = mealkit_chef_d.css("p").attribute("description")
+      #mealkit.description = mealkit_chef_d.css("p").attribute("description")
       @@all << mealkit
     end
   end

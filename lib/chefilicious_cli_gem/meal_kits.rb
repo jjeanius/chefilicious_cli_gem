@@ -26,31 +26,40 @@ end
       mealkit.allergen = mealkit_chef_d.attribute("data-allergens")
       mealkit.cuisine = mealkit_chef_d.attribute("data-cuisine")
       mealkit.food_category = mealkit_chef_d.attribute("data-proteins")
-      mealkit.description = mealkit_chef_d.css("p").attrib"description")
+      mealkit.description = mealkit_chef_d.css("p").attribute("description")
       @@all << mealkit
     end
   end
 
-  def self.scrape_chefday
-    doc = Nokogiri::HTML(open("http://www.chefday.com/recipes"))
-    meal_kits_chefday = doc.css("ul div#left-side")
-    #meal_kits_chefday = doc.css("div").text
-    meal_kits_chefday.each do |mealkit_chefday|
-      binding.pry
-    mealkit_chefday.name = mealkit_chefday.css("h1.name")
-    mealkit_chefday.price = mealkit_chefday.css("div.serving-price")
-    mealkit_chefday.skill_level = mealkit_chefday.css("span.min-cap")
-
-    #mealkit_chefday.meal_type = mealkit_chefday.css("
-    mealkit_chefday.cooking_time = mealkit_chefday.css("time").totalTime("time")
-    mealkit_chefday.allergen = mealkit_chefday.css("  ")
-    mealkit_chefday.cuisine = mealkit_chefday.css("  ")
-    mealkit_chefday.food_category = mealkit_chefday.css(" ")
-    mealkit_chefday.url = mealkit_chef_d.css("a").attribute("href")
-
+  def self.scrape_chefd_chefs
+    doc = Nokogiri::HTML(open("https://www.chefd.com/pages/our-chefs"))
+    meal_kits_chefd_chefs = doc.css("div#chefsGrid.che-grid div.chef-details")
+    meal_kits_chefd_chefs.each do|mealkit_chef|
+      mealkit_chef = self.new
+      mealkit_chef.chefname = mealkit_chef.attribute("chef-name")
+      mealkit_chef.knowfor = mealkit_chef.attribute("chef-description")
+      mealkit_chef.description = mealkit_chef.attribute("p.description")
+      @@all << mealkit_chef
     end
   end
 
-
+#  def self.scrape_chefday
+#    doc = Nokogiri::HTML(open("http://www.chefday.com/recipes"))
+#    meal_kits_chefday = doc.css("ul div#left-side")
+#    #meal_kits_chefday = doc.css("div").text
+#    meal_kits_chefday.each do |mealkit_chefday|
+#      binding.pry
+#    mealkit_chefday.name = mealkit_chefday.css("h1.name")
+#    mealkit_chefday.price = mealkit_chefday.css("div.serving-price")
+#    mealkit_chefday.skill_level = mealkit_chefday.css("span.min-cap")
+#
+#    #mealkit_chefday.meal_type = mealkit_chefday.css("
+#    mealkit_chefday.cooking_time = mealkit_chefday.css("time").totalTime("time")
+#    mealkit_chefday.allergen = mealkit_chefday.css("  ")
+#    mealkit_chefday.cuisine = mealkit_chefday.css("  ")
+#    mealkit_chefday.food_category = mealkit_chefday.css(" ")
+#    mealkit_chefday.url = mealkit_chef_d.css("a").attribute("href")
+#    end
+#  end
 
 end

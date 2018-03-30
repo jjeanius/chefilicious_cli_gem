@@ -1,4 +1,4 @@
-class ChefiliciousCliGem::Meal_Kits
+class ChefiliciousCliGem::Scraper
   attr_accessor :name, :price, :skill_level, :cooking_time, :allergen, :url, :meal_kits, :meal_type, :cuisine, :food_category, :img
   @@all = []
 

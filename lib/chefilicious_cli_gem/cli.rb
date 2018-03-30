@@ -1,4 +1,5 @@
 class ChefiliciousCliGem::CLI
+  attr_accessor :mealkit.name,
 
   def call
     @meal_kits = ChefiliciousCliGem::Meal_Kits.scrape_all

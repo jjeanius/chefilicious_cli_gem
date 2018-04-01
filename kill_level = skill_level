@@ -1,0 +1,22 @@
+
+[1mFrom:[0m /home/jjeanius/temporary/chefilicious_cli_gem/lib/chefilicious_cli_gem/meal_kits.rb @ line 28 ChefiliciousCliGem::Meal_Kits.scrape_chef_d:
+
+    [1;34m24[0m: [32mdef[0m [1;36mself[0m.[1;34mscrape_chef_d[0m
+    [1;34m25[0m:   doc = [1;34;4mNokogiri[0m::HTML(open([31m[1;31m"[0m[31mhttps://www.chefd.com/collections/all?sort_by=best-selling[1;31m"[0m[31m[0m))
+    [1;34m26[0m:    meal_kits_chef_d = doc.css([31m[1;31m"[0m[31mdiv.grid.grid--uniform.grid--view-items.product-list div.grid__item.small--one-half.medium-up--one-third.product-item[1;31m"[0m[31m[0m)
+    [1;34m27[0m:   meal_kits_chef_d.each [32mdo[0m|mealkit_chef_d|
+ => [1;34m28[0m:     binding.pry
+    [1;34m29[0m:     mealkit = [1;36mself[0m.new
+    [1;34m30[0m:     mealkit.price = mealkit_chef_d.css([31m[1;31m"[0m[31mbutton[1;31m"[0m[31m[0m).text.gsub([35m[1;35m/[0m[35m[1;35m\n[0m[35m[1;35m/[0m[35m[0m,[31m[1;31m"[0m[31m[1;31m"[0m[31m[0m).strip  [1;34m# need to work on spacing[0m
+    [1;34m31[0m:     mealkit.skill_level = mealkit_chef_d.attribute([31m[1;31m"[0m[31mdata-skill_level[1;31m"[0m[31m[0m).value
+    [1;34m32[0m:     mealkit.url = [31m[1;31m"[0m[31mhttps://www.chefd.com#{mealkit_chef_d.css([1;31m'[0m[31ma[1;31m'[0m[31m[0m[31m).attribute([1;31m'[0m[31mhref[1;31m'[0m[31m[0m[31m).text.strip}[0m[31m[1;31m"[0m[31m[0m
+    [1;34m33[0m:     mealkit.meal_type = mealkit_chef_d.attribute([31m[1;31m"[0m[31mdata-type_of_meal[1;31m"[0m[31m[0m)
+    [1;34m34[0m:     mealkit.cooking_time = mealkit_chef_d.css([31m[1;31m"[0m[31mspan[1;31m"[0m[31m[0m).text.strip  [1;34m# Need to remove "Net Carbs940For 2 For 4 "[0m
+    [1;34m35[0m:     mealkit.allergen = mealkit_chef_d.attribute([31m[1;31m"[0m[31mdata-allergens[1;31m"[0m[31m[0m)
+    [1;34m36[0m:     mealkit.cuisine = mealkit_chef_d.attribute([31m[1;31m"[0m[31mdata-cuisine[1;31m"[0m[31m[0m)
+    [1;34m37[0m:     mealkit.food_category = mealkit_chef_d.attribute([31m[1;31m"[0m[31mdata-proteins[1;31m"[0m[31m[0m)
+    [1;34m38[0m:     mealkit.rating = mealkit_chef_d.css([31m[1;31m"[0m[31mdiv.grid-view-item__meta.product_rating[1;31m"[0m[31m[0m)  [1;34m#product rating is not working[0m
+    [1;34m39[0m:     [36m@@all[0m << mealkit
+    [1;34m40[0m:   [32mend[0m
+    [1;34m41[0m: [32mend[0m
+

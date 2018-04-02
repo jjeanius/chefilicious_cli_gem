@@ -52,7 +52,8 @@ class ChefiliciousCliGem::CLI < ChefiliciousCliGem::Meal_Kits
         puts "-------------- Let's Revolutionize Your Dinner Routine! ----------------"
         puts ""
       #binding.pry
-        @@all.each do|meal|meal.name == mealkit.name
+      @@all.each do|meal|
+        #  meal.name == mealkit.name
         #  mealkit.cooking_time = cooking_time
         #  mealkit.skill_level = skill_level
         #  mealkit.cuisine = cuisine
@@ -86,11 +87,11 @@ class ChefiliciousCliGem::CLI < ChefiliciousCliGem::Meal_Kits
      end
 
     def display_chefs(chefd)
-
+      self.scrape_chefd_chefs
      puts ""
      puts "---------- Our Famous Chefs ----------"
      puts ""
-     @chefs.each with_index do |meal_kit_chef, index|    #ChefiliciousCliGem::Meal_Kits.each.with_index(from_number) do |mealkit_chef, index|
+     @@all.each with_index do |meal_kit_chef, index|    #ChefiliciousCliGem::Meal_Kits.each.with_index(from_number) do |mealkit_chef, index|
         puts "#{index}. #{mealkit_chef.chefname} - {mealkit_chef.knowfor}"
         puts ""
         puts ""

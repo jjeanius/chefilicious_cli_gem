@@ -3,22 +3,22 @@ class ChefiliciousCliGem::Meal_Kits
   @@all = []
 
   def initialize
-    @name = name
-    @price = price
-    @skill_level = skill_level
-    @cooking_time = cooking_time
-    @allergen = allergen
-    @url = url
-    @mealkit = mealkit
+    @name == name
+    @price == price
+    @skill_level == skill_level
+    @cooking_time == cooking_time
+    @allergen == allergen
+    @url == url
+    @mealkit == mealkit
+  end
+
+  def self.all
+    @@all
   end
 
   def self.scrape_all
     self.scrape_chef_d
     self.scrape_chefd_chefs
-end
-
-  def self.all
-    @@all
   end
 
   def self.scrape_chef_d
@@ -37,6 +37,7 @@ end
       mealkit.cuisine = mealkit_chef_d.attribute("data-cuisine")
       mealkit.food_category = mealkit_chef_d.attribute("data-proteins")
       mealkit.rating = mealkit_chef_d.css("div.grid-view-item__meta").first.attribute("product_rating") #product rating is not working  .product_rating
+      mealkit
       @@all << mealkit
     end
   end
@@ -50,21 +51,23 @@ end
       mealkit_chef.chefname = mealkit_chef.attribute("chef-name")
       mealkit_chef.knowfor = mealkit_chef.attribute("chef-description")
       mealkit_chef.description = mealkit_chef.attribute("p.description")
+      mealkit_chef
       @@all << mealkit_chef
     end
   end
 
-def self.save
-  @@all
-end
 
+  def self.find_by_mealkit
+    @@all.detect{|meal| meal == mealkit}
+    end
 
-  def self.find_by_mealkit(name)
-    @@all.detect{|mealkit|mealkit.name == name}
+  def self.find_by_chef
+    @@all.detect{|chefname|chefname == mealkit_chef}
+    end
+
+  def self.save
+    @@all
   end
 
-  def self.find_by_chef(name)
-    @@all.detect{|chefname|chefname.name == name}
-  end
 
 end

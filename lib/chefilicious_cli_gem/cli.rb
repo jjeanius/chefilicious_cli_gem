@@ -1,16 +1,6 @@
 class ChefiliciousCliGem::CLI < ChefiliciousCliGem::Meal_Kits
   attr_accessor :name, :price, :skill_level, :cooking_time, :allergen, :url, :meal_kits, :meal_type, :cuisine, :food_category, :mealkit, :rating
 
-  def initialize
-    @name = name
-    @price = price
-    @skill_level = skill_level
-    @cooking_time = cooking_time
-    @allergen = allergen
-    @url = url
-    @mealkit = mealkit
-  end
-
   def call
     ChefiliciousCliGem::Meal_Kits.scrape_all
     puts ""
@@ -37,9 +27,29 @@ class ChefiliciousCliGem::CLI < ChefiliciousCliGem::Meal_Kits
 
       case input
         when "1"
-          display_meal_kits
+          display_meal_kits(meal_kits)
+          puts ""
+          puts "please select a Meal Kit:"
+          input = gets.strip
+
+          mealkit = ChefiliciousCliGem::Meal_Kits.find_by_mealkit(input.to_i)
+
+          display_mealkit_description
+          puts ""
+          good_bye
+
         when "2"
-          display_chefs
+          display_chefs(input)
+          puts ""
+          puts "please select a chef:"
+          input = gets.strip
+
+          mealkit = ChefiliciousCliGem::Meal_Kits.find_by_chef(input.to_i)
+
+          display_chef_bio
+          puts ""
+          good_bye
+
         when "3"
           exit
         else
@@ -47,27 +57,27 @@ class ChefiliciousCliGem::CLI < ChefiliciousCliGem::Meal_Kits
         end
       end
 
-      def display_meal_kits
+      def index
+        counter = 1
+        until counter == 100
+          puts "#{counter}"
+          counter +=1
+        end
+      end
+
+      def display_meal_kits(meal_kits)
         puts ""
         puts "-------------- Let's Revolutionize Your Dinner Routine! ----------------"
         puts ""
-      #binding.pry
-      @@all.each do|meal|
-        #  meal.name == mealkit.name
-        #  mealkit.cooking_time = cooking_time
-        #  mealkit.skill_level = skill_level
-        #  mealkit.cuisine = cuisine
-        #  mealkit.price = price
-        puts " #{mealkit.name} - #{mealkit.cooking_time} - #{mealkit.skill_level} - #{mealkit.cuisine} - #{mealkit.price}"
-        puts "please select a Meal Kit:"
+          @@all.each do|mealkit|
+        puts "#{index} - #{mealkit.name} - #{mealkit.cooking_time} - #{mealkit.skill_level} - #{mealkit.cuisine} - #{mealkit.price}"
         puts ""
         input = gets.strip
         display_meal_kit_description
-        good bye
        end
-     end
+      end
 
-       def display_meal_kit_description(mealkit)
+       def display_meal_kit_description
          puts ""
          puts "----------- #{mealkit.name} - #{mealkit.skill_level} -----------"
          puts ""
@@ -87,12 +97,11 @@ class ChefiliciousCliGem::CLI < ChefiliciousCliGem::Meal_Kits
      end
 
     def display_chefs(chefd)
-      self.scrape_chefd_chefs
      puts ""
      puts "---------- Our Famous Chefs ----------"
      puts ""
-     @@all.each with_index do |meal_kit_chef, index|    #ChefiliciousCliGem::Meal_Kits.each.with_index(from_number) do |mealkit_chef, index|
-        puts "#{index}. #{mealkit_chef.chefname} - {mealkit_chef.knowfor}"
+     ChefiliciousCliGem::Meal_Kits.each do|mealkit_chef|
+        puts "#{index} - #{mealkit_chef.chefname} - {mealkit_chef.knowfor}"
         puts ""
         puts ""
         input = gets.strip
@@ -101,7 +110,6 @@ class ChefiliciousCliGem::CLI < ChefiliciousCliGem::Meal_Kits
     end
 
     def display_chef_bio
-
       puts ""
       puts ""
       puts "---------------About #{mealkit_chef.chefname}--------------"

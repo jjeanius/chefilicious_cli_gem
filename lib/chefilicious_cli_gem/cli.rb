@@ -67,39 +67,37 @@ class ChefiliciousCliGem::CLI < ChefiliciousCliGem::Meal_Kits
         puts ""
         puts "-------------- Let's Revolutionize Your Dinner Routine! ----------------"
         puts ""
-        @@all.each do|mealkit|
+        @@all.collect do|mealkit|
+
         counter = 1
           until counter == 100
-          counter +=1
           puts "#{counter} - #{mealkit.name} - #{mealkit.cooking_time} - #{mealkit.skill_level} - #{mealkit.cuisine} - #{mealkit.price}"
+          counter +=1
           puts ""
         end
 
         puts "please select a Meal Kit:"
         input = gets.strip
 
-        display_meal_kit_detail
-       end
-      end
-
-       def display_meal_kit_detail
          puts ""
-         puts "----------- #{mealkit.name} - #{mealkit.skill_level} -----------"
+         puts "----------- #{mealkit.name} - #{mealkit.cuisine} Cuisine -----------"
          puts ""
-         puts "Chef:              #{mealkit_chef.chefname}"
-         puts "Cuisine:           #{mealkit.cuisine}"
+        # puts "Chef:              #{mealkit_chef.chefname}"
+         puts "Skill Level:       #{mealkit.skill_level}"
          puts "Food Category:     #{mealkit.food_category}"
          puts "Allergen:          #{mealkit.allergen}"
-         puts "Cooking time:      #{mealkit.cooking_time}"
+         puts "Cooking Time:      #{mealkit.cooking_time}"
          puts "Price:             #{mealkit.price}"
          puts "Website:           #{mealkit.url}"
          puts ""
          puts "---------------Description--------------"
          puts ""
-         puts "#{mealkit.description}"
+        # puts "#{mealkit.description}"
          puts ""
          good_bye
+
      end
+   end
 
     def display_chefs(chefd)
      puts ""

@@ -67,13 +67,13 @@ class ChefiliciousCliGem::CLI < ChefiliciousCliGem::Meal_Kits
         puts ""
         puts "-------------- Let's Revolutionize Your Dinner Routine! ----------------"
         puts ""
+        puts "          Name                           Time    Level   Cuisine     Price"
         @@all.collect do|mealkit|
-
+          mealkit == mealkit
         counter = 1
-          until counter == 100
+          until counter == 101
           puts "#{counter} - #{mealkit.name} - #{mealkit.cooking_time} - #{mealkit.skill_level} - #{mealkit.cuisine} - #{mealkit.price}"
           counter +=1
-          puts ""
         end
 
         puts "please select a Meal Kit:"
@@ -130,7 +130,7 @@ class ChefiliciousCliGem::CLI < ChefiliciousCliGem::Meal_Kits
         start
       else
         puts ""
-        puts " Thank You! Have a wonderful day!"
+        puts "Thank You! Have a wonderful day!"
         exit
       end
     end

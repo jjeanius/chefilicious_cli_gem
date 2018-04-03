@@ -82,7 +82,7 @@ class ChefiliciousCliGem::CLI < ChefiliciousCliGem::Meal_Kits
          puts ""
          puts "----------- #{mealkit.name} - #{mealkit.cuisine} Cuisine -----------"
          puts ""
-        # puts "Chef:              #{mealkit_chef.chefname}"
+         #puts "Chef:              #{chef.name}"
          puts "Skill Level:       #{mealkit.skill_level}"
          puts "Food Category:     #{mealkit.food_category}"
          puts "Allergen:          #{mealkit.allergen}"
@@ -90,7 +90,7 @@ class ChefiliciousCliGem::CLI < ChefiliciousCliGem::Meal_Kits
          puts "Price:             #{mealkit.price}"
          puts "Website:           #{mealkit.url}"
          puts ""
-         puts "---------------Description--------------"
+         puts "---------------------------  Description  -----------------------------"
          puts ""
         # puts "#{mealkit.description}"
          puts ""
@@ -99,12 +99,12 @@ class ChefiliciousCliGem::CLI < ChefiliciousCliGem::Meal_Kits
      end
    end
 
-    def display_chefs(chefd)
+    def display_chefs(chefs)
      puts ""
-     puts "---------- Our Famous Chefs ----------"
+     puts "------------------- Our Famous Chefs ---------------------"
      puts ""
-     ChefiliciousCliGem::Meal_Kits.each do|mealkit_chef|
-        puts "#{index} - #{mealkit_chef.chefname} - {mealkit_chef.knowfor}"
+     @@all.each do|famous_chef|
+        puts "#{index} - #{chef.name} - {chef.knowfor}"
         puts ""
         puts ""
         input = gets.strip
@@ -115,9 +115,9 @@ class ChefiliciousCliGem::CLI < ChefiliciousCliGem::Meal_Kits
     def display_chef_bio
       puts ""
       puts ""
-      puts "---------------About #{mealkit_chef.chefname}--------------"
+      puts "---------------About #{chef.name}--------------"
       puts ""
-      puts "#{mealkit_chef.description}"
+      puts "#{chef.description}"
       puts ""
       good_bye
     end

@@ -28,15 +28,15 @@ class ChefiliciousCliGem::Meal_Kits
       #binding.pry
       mealkit = self.new
       mealkit.name = mealkit_chef_d.css("a").attribute("data-name").value
-      mealkit.price = mealkit_chef_d.css("button").text.gsub(/\n/,"").strip  # need to work on spacing
+      mealkit.price = mealkit_chef_d.css("button")[0].text.gsub(/\n/,"").strip
       mealkit.skill_level = mealkit_chef_d.attribute("data-skill_level").value
       mealkit.url = "https://www.chefd.com#{mealkit_chef_d.css('a').attribute('href').text.strip}"
       mealkit.meal_type = mealkit_chef_d.attribute("data-type_of_meal")
-      mealkit.cooking_time = mealkit_chef_d.css("span").text.strip  # Need to remove "Net Carbs940For 2 For 4 "
+      mealkit.cooking_time = mealkit_chef_d.css("span")[0].text
       mealkit.allergen = mealkit_chef_d.attribute("data-allergens")
       mealkit.cuisine = mealkit_chef_d.attribute("data-cuisine")
       mealkit.food_category = mealkit_chef_d.attribute("data-proteins")
-      mealkit.rating = mealkit_chef_d.css("div.grid-view-item__meta").first.attribute("product_rating") #product rating is not working  .product_rating
+      mealkit.rating = mealkit_chef_d.css("grid-view-item__meta").first.attribute("product_rating") #product rating is not working  .product_rating
       mealkit
       @@all << mealkit
     end
@@ -48,7 +48,7 @@ class ChefiliciousCliGem::Meal_Kits
     meal_kits_chefd_chefs.each do|mealkit_chef|
       binding.pry
       mealkit_chef = self.new
-      mealkit_chef.chefname = mealkit_chef.attribute("chef-name")
+      mealkit_chef.name = mealkit_chef.attribute("chef-name")
       mealkit_chef.knowfor = mealkit_chef.attribute("chef-description")
       mealkit_chef.description = mealkit_chef.attribute("p.description")
       mealkit_chef

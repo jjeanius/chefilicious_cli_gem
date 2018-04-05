@@ -69,7 +69,6 @@ class ChefiliciousCliGem::CLI < ChefiliciousCliGem::Meal_Kits
         puts ""
         puts "          Name                           Time    Level   Cuisine     Price"
         @@all.collect do|mealkit|
-          mealkit == mealkit
         counter = 1
           until counter == 101
           puts "#{counter} - #{mealkit.name} - #{mealkit.cooking_time} - #{mealkit.skill_level} - #{mealkit.cuisine} - #{mealkit.price}"
@@ -104,11 +103,15 @@ class ChefiliciousCliGem::CLI < ChefiliciousCliGem::Meal_Kits
      puts "------------------- Our Famous Chefs ---------------------"
      puts ""
      @@all.each do|famous_chef|
-        puts "#{index} - #{chef.name} - {chef.knowfor}"
-        puts ""
-        puts ""
-        input = gets.strip
-        display_chef_bio
+       famous_chef == chef.name
+       counter = 1
+         until counter == 101
+         puts "#{counter} - #{chef.name} - {chef.knowfor}"
+         counter +=1
+         puts ""
+         puts ""
+         input = gets.strip
+         display_chef_bio
       end
     end
 
@@ -127,7 +130,7 @@ class ChefiliciousCliGem::CLI < ChefiliciousCliGem::Meal_Kits
       puts "Would you like to see another meal_kit?  Enter Y or N"
       input = gets.strip.downcase
       if input == "y"
-        start
+        main_menu
       else
         puts ""
         puts "Thank You! Have a wonderful day!"

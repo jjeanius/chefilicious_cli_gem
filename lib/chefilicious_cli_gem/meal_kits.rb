@@ -1,5 +1,5 @@
 class ChefiliciousCliGem::Meal_Kits
-  attr_accessor :name, :price, :skill_level, :cooking_time, :allergen, :url, :meal_kits, :meal_type, :cuisine, :food_category, :mealkit, :rating
+  attr_accessor :name, :price, :skill_level, :cooking_time, :allergen, :url, :meal_kits, :meal_type, :cuisine, :food_category, :mealkit, :rating, :chef
   @@all = []
 
   def initialize
@@ -10,6 +10,7 @@ class ChefiliciousCliGem::Meal_Kits
     @allergen == allergen
     @url == url
     @mealkit == mealkit
+    @chef == chef
   end
 
   def self.all
@@ -44,11 +45,12 @@ class ChefiliciousCliGem::Meal_Kits
 
   def self.scrape_chefs
     doc = Nokogiri::HTML(open("https://www.chefd.com/pages/our-chefs"))
-    meal_kits_chefs = doc.css("id")
+    meal_kits_chefs = doc.css("div.section-width-limiter")
     meal_kits_chefs.each do|mealkit_chef|
+      mealkit_chef == chef
       binding.pry
-      chef = self.new
-      chef.name = mealkit_chef.css("div.chef-details")
+      chef.new = chef
+      chef.name = mealkit_chef.css("chefsGrid.chef-name")
       chef.knowfor = mealkit_chef.attribute("chef-description")
       chef.description = mealkit_chef.attribute("p.description")
       chef.url = "https://www.chefd.com/collections/#{chef.css('a').attribute('href').text.strip}"

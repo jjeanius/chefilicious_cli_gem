@@ -1,5 +1,4 @@
 class ChefiliciousCliGem::CLI < ChefiliciousCliGem::Meal_Kits
-  attr_accessor :name, :price, :skill_level, :cooking_time, :allergen, :url, :meal_kits, :meal_type, :cuisine, :food_category, :mealkit, :rating
 
   def call
     ChefiliciousCliGem::Meal_Kits.scrape_all
@@ -112,6 +111,7 @@ class ChefiliciousCliGem::CLI < ChefiliciousCliGem::Meal_Kits
          puts ""
          input = gets.strip
          display_chef_bio
+       end
       end
     end
 

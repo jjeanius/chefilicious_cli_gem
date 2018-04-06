@@ -46,19 +46,17 @@ class ChefiliciousCliGem::Meal_Kits
   def self.scrape_chefs
     doc = Nokogiri::HTML(open("https://www.chefd.com/pages/our-chefs"))
     meal_kits_chefs = doc.css("div.section-width-limiter")
-    meal_kits_chefs.each do|mealkit_chef|
-      mealkit_chef == chef
-      binding.pry
+    meal_kits_chefs.each do|chef|
+binding.pry
       chef.new = chef
-      chef.name = mealkit_chef.css("chefsGrid.chef-name")
-      chef.knowfor = mealkit_chef.attribute("chef-description")
-      chef.description = mealkit_chef.attribute("p.description")
+      chef.name = chef.css("chef_name").text
+      chef.knowfor = chef.css("chef-description")
+      chef.description = chef.css("p.description")
       chef.url = "https://www.chefd.com/collections/#{chef.css('a').attribute('href').text.strip}"
       chef
       @@all << chef
     end
   end
-
 
   def self.find_by_mealkit
     @@all.detect{|meal| meal == mealkit}

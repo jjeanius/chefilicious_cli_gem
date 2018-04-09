@@ -19,7 +19,7 @@ class ChefiliciousCliGem::Meal_Kits
 
   def self.scrape_all
     self.scrape_chef_d
-    self.scrape_chefs
+  #  self.scrape_chefs
   end
 
   def self.scrape_chef_d
@@ -43,28 +43,28 @@ class ChefiliciousCliGem::Meal_Kits
     end
   end
 
-  def self.scrape_chefs
-    doc = Nokogiri::HTML(open("https://www.chefd.com/pages/our-chefs"))
-    meal_kits_chefs = doc.css("div.section-width-limiter")
-    meal_kits_chefs.each do|chef|
-binding.pry
-      chef.new = chef
-      chef.name = chef.css("chef_name").text
-      chef.knowfor = chef.css("chef-description")
-      chef.description = chef.css("p.description")
-      chef.url = "https://www.chefd.com/collections/#{chef.css('a').attribute('href').text.strip}"
-      chef
-      @@all << chef
-    end
-  end
+#  def self.scrape_chefs
+#    doc = Nokogiri::HTML(open("https://www.chefd.com/pages/our-chefs"))
+#    meal_kits_chefs = doc.css("div.section-width-limiter div#chefsGrid.chef-grid")
+#    meal_kits_chefs.each do|chef|
+#binding.pry
+#      chef.new = chef
+#      chef.name = chef.css("#chefsGrid").css("chef_name")
+#      chef.knowfor = chef.css("chef-description")
+#      chef.description = chef.css("p.description")
+#      chef.url = "https://www.chefd.com/collections/#{chef.css('a').attribute('href').text.strip}"
+#      chef
+#      @@all << chef
+#    end
+#  end
 
   def self.find_by_mealkit
     @@all.detect{|meal| meal == mealkit}
     end
 
-  def self.find_by_chef
-    @@all.detect{|chefname|chefname == chef}
-    end
+#  def self.find_by_chef
+#    @@all.detect{|chefname|chefname == chef}
+#    end
 
   def self.save
     @@all

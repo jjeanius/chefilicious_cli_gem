@@ -49,9 +49,11 @@ class ChefiliciousCliGem::CLI < ChefiliciousCliGem::Meal_Kits
 
         when "3"
           exit
+
         else
           puts "Please make a valid selection"
         end
+        main_menu
       end
 
     #  def index
@@ -64,14 +66,18 @@ class ChefiliciousCliGem::CLI < ChefiliciousCliGem::Meal_Kits
 
       def display_meal_kits(meal_kits)
         puts ""
-        puts "-------------- Let's Revolutionize Your Dinner Routine! ----------------"
+        puts "----------------- Let's Revolutionize Your Dinner Routine! --------------------"
         puts ""
         puts "          Name                           Time    Level   Cuisine     Price"
-        @@all.collect do|mealkit|
-        counter = 1
-          until counter == 101
-          puts "#{counter} - #{mealkit.name} - #{mealkit.cooking_time} - #{mealkit.skill_level} - #{mealkit.cuisine} - #{mealkit.price}"
-          counter +=1
+        puts "--------------------------------------------------------------------------------"
+        @@all.each do |mealkit|
+          mealkit== mealkit.name
+
+          counter = 1
+            until counter == 101
+            puts "#{counter} - #{mealkit.name} - #{mealkit.cooking_time} - #{mealkit.skill_level} - #{mealkit.cuisine} - #{mealkit.price}"
+            counter +=1
+
         end
 
         puts "please select a Meal Kit:"

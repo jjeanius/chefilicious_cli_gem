@@ -70,15 +70,14 @@ class ChefiliciousCliGem::CLI < ChefiliciousCliGem::Meal_Kits
         puts ""
         puts "          Name                           Time    Level   Cuisine     Price"
         puts "--------------------------------------------------------------------------------"
+
+        counter = 1
+        until counter == 100
         @@all.each do |mealkit|
-          mealkit== mealkit.name
-
-          counter = 1
-            until counter == 101
-            puts "#{counter} - #{mealkit.name} - #{mealkit.cooking_time} - #{mealkit.skill_level} - #{mealkit.cuisine} - #{mealkit.price}"
-            counter +=1
-
-        end
+          mealkit.name == mealkit
+          puts "#{counter} - #{mealkit.name} - #{mealkit.cooking_time} - #{mealkit.skill_level} - #{mealkit.cuisine} - #{mealkit.price}"
+          counter +=1
+      end
 
         puts "please select a Meal Kit:"
         input = gets.strip
@@ -99,7 +98,6 @@ class ChefiliciousCliGem::CLI < ChefiliciousCliGem::Meal_Kits
         # puts "#{mealkit.description}"
          puts ""
          good_bye
-
      end
    end
 

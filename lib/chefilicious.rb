@@ -6,7 +6,7 @@ require 'colorize'
 require_relative "./chefilicious_cli_gem/version"
 require_relative './chefilicious_cli_gem/meal_kits'
 require_relative './chefilicious_cli_gem/cli'
-require_relative './chefilicious_cli_gem/chef'
+require_relative './chefilicious_cli_gem/chefs'
 
 class ChefiliciousCliGem::CLI
 

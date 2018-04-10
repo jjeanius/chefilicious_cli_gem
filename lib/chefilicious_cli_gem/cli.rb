@@ -2,6 +2,7 @@ class ChefiliciousCliGem::CLI < ChefiliciousCliGem::Meal_Kits
 
   def call
     ChefiliciousCliGem::Meal_Kits.scrape_all
+    Chef.scrape_all_chefs
     puts "Welcome to the Chefilicious!"
     puts "A place where your culinary experience comes to life!"
     start
@@ -27,13 +28,9 @@ class ChefiliciousCliGem::CLI < ChefiliciousCliGem::Meal_Kits
       case input
         when "1"
           display_meal_kits(meal_kits)
-          puts "please select a Meal Kit:"
-          input = gets.strip
-    
           mealkit = ChefiliciousCliGem::Meal_Kits.find_by_mealkit(input.to_i)
-          #binding.pry
             puts ""
-              display_mealkit_description(mealkit)
+              display_mealkit_description
                 puts ""
                   good_bye
 
@@ -74,14 +71,20 @@ class ChefiliciousCliGem::CLI < ChefiliciousCliGem::Meal_Kits
           end
 
 
-      def display_mealkit_description(mealkit)
+        puts "please select a Meal Kit:"
+        input = gets.strip
+
+      def display_mealkit_description
         puts ""
         puts ""
         puts ""
-        puts ""
-        puts "----------- #{mealkit.name} - #{mealkit.cuisine} Cuisine -----------"
-        puts ""
-        #puts "Chef:              #{chef.name}"
+        @@all.each do |mealkit|
+          mealkit.name == mealkit
+            puts "#{mealkit.name}"
+              puts ""
+                puts "----------- #{mealkit.name} - #{mealkit.cuisine} Cuisine -----------"
+                  puts ""
+         #puts "Chef:              #{chef.name}"
         puts "Skill Level:       #{mealkit.skill_level}"
         puts "Food Category:     #{mealkit.food_category}"
         puts "Allergen:          #{mealkit.allergen}"
@@ -94,6 +97,7 @@ class ChefiliciousCliGem::CLI < ChefiliciousCliGem::Meal_Kits
       # puts "#{mealkit.description}"
         puts ""
        good_bye
+     end
    end
 
 
@@ -129,7 +133,7 @@ class ChefiliciousCliGem::CLI < ChefiliciousCliGem::Meal_Kits
 
      def good_bye
       puts ""
-      puts "Would you like to see another meal_kit?  Enter Y or N"
+      puts "Would you like to see another meal kit?  Enter Y or N"
       input = gets.strip.downcase
       if input == "y"
         main_menu

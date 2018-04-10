@@ -32,42 +32,43 @@ class ChefiliciousCliGem::Meal_Kits
       mealkit.price = mealkit_chef_d.css("button")[0].text.gsub(/\n/,"").strip
       mealkit.skill_level = mealkit_chef_d.attribute("data-skill_level").value
       mealkit.url = "https://www.chefd.com#{mealkit_chef_d.css('a').attribute('href').text.strip}"
-      mealkit.meal_type = mealkit_chef_d.attribute("data-type_of_meal")
+      mealkit.meal_type = mealkit_chef_d.attribute("data-type_of_meal").value
       mealkit.cooking_time = mealkit_chef_d.css("span")[0].text
-      mealkit.allergen = mealkit_chef_d.attribute("data-allergens")
-      mealkit.cuisine = mealkit_chef_d.attribute("data-cuisine")
-      mealkit.food_category = mealkit_chef_d.attribute("data-proteins")
+      mealkit.allergen = mealkit_chef_d.attribute("data-allergens").value
+      mealkit.cuisine = mealkit_chef_d.attribute("data-cuisine").value
+      mealkit.food_category = mealkit_chef_d.attribute("data-proteins").value
       mealkit.rating = mealkit_chef_d.css("div.grid-view-item__meta.product_rating")  # does not work
+      #binding.pry
       mealkit
       @@all << mealkit
     end
   end
 
-#  def self.scrape_chefs
-#    doc = Nokogiri::HTML(open("https://www.chefd.com/pages/our-chefs"))
-#    meal_kits_chefs = doc.css("div.section-width-limiter div#chefsGrid.chef-grid")
-#    meal_kits_chefs.each do|chef|
-#binding.pry
-#      chef.new = chef
-#      chef.name = chef.css("#chefsGrid").css("chef_name")
-#      chef.knowfor = chef.css("chef-description")
-#      chef.description = chef.css("p.description")
-#      chef.url = "https://www.chefd.com/collections/#{chef.css('a').attribute('href').text.strip}"
-#      chef
-#      @@all << chef
-#    end
-#  end
+  def self.scrape_chefs
+    doc = Nokogiri::HTML(open("https://www.chefd.com/pages/our-chefs"))
+    meal_kits_chefs = doc.css("div.section-width-limiter div#chefsGrid.chef-grid")
+    meal_kits_chefs.each do|chef|
+binding.pry
+      chef.new = chef
+      chef.name = chef.css("#chefsGrid").css("chef_name")
+      chef.knowfor = chef.css("chef-description")
+      chef.description = chef.css("p.description")
+      chef.url = "https://www.chefd.com/collections/#{chef.css('a').attribute('href').text.strip}"
+      chef
+      @@all << chef
+    end
+  end
 
   def self.find_by_mealkit(mealkit)
-    @@all.detect {|meal| meal.name == mealkit}
-    mealkit
+    @@all[mealkit.to_i-1]
     end
-#  def self.find_by_chef
-#    @@all.detect{|chefname|chefname == chef}
-#    end
+    
+  def self.find_by_chef
+    @@all.detect{|chefname|chefname == chef}
+    end
 
   def self.save
-    @@all
+    @@all 
   end
 
 

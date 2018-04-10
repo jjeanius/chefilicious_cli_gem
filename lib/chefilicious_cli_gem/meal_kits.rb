@@ -1,5 +1,6 @@
 class ChefiliciousCliGem::Meal_Kits
   attr_accessor :name, :price, :skill_level, :cooking_time, :allergen, :url, :meal_kits, :meal_type, :cuisine, :food_category, :mealkit, :rating, :chef
+
   @@all = []
 
   def initialize
@@ -26,7 +27,6 @@ class ChefiliciousCliGem::Meal_Kits
     doc = Nokogiri::HTML(open("https://www.chefd.com/collections/all?sort_by=best-selling"))
      meal_kits_chef_d = doc.css("div.grid.grid--uniform.grid--view-items.product-list div.grid__item.small--one-half.medium-up--one-third.product-item")
      meal_kits_chef_d.each do|mealkit_chef_d|
-    #  binding.pry
       mealkit = self.new
       mealkit.name = mealkit_chef_d.css("a").attribute("data-name").value
       mealkit.price = mealkit_chef_d.css("button")[0].text.gsub(/\n/,"").strip
@@ -58,10 +58,10 @@ class ChefiliciousCliGem::Meal_Kits
 #    end
 #  end
 
-  def self.find_by_mealkit
-    @@all.detect{|meal| meal == mealkit}
+  def self.find_by_mealkit(mealkit)
+    @@all.detect {|meal| meal.name == mealkit}
+    mealkit
     end
-
 #  def self.find_by_chef
 #    @@all.detect{|chefname|chefname == chef}
 #    end

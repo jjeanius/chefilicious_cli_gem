@@ -2,7 +2,7 @@ class ChefiliciousCliGem::CLI < ChefiliciousCliGem::Meal_Kits
 
   def call
     ChefiliciousCliGem::Meal_Kits.scrape_all
-    Chef.scrape_all_chefs
+    Chefs.scrape_all_chefs
     puts "Welcome to the Chefilicious!"
     puts "A place where your culinary experience comes to life!"
     start
@@ -39,7 +39,7 @@ class ChefiliciousCliGem::CLI < ChefiliciousCliGem::Meal_Kits
             puts ""
               puts "please select a chef:"
                 input = gets.strip
-                  mealkit = ChefiliciousCliGem::Meal_Kits.find_by_chef(input.to_i)
+                  mealkit_chef = Chefs.find_by_chef(input.to_i)
                     display_chef_bio
                       puts ""
                         good_bye
@@ -79,12 +79,12 @@ class ChefiliciousCliGem::CLI < ChefiliciousCliGem::Meal_Kits
         puts ""
         puts ""
         @@all.each do |mealkit|
-          mealkit.name == mealkit
-            puts "#{mealkit.name}"
-              puts ""
-                puts "----------- #{mealkit.name} - #{mealkit.cuisine} Cuisine -----------"
-                  puts ""
-         #puts "Chef:              #{chef.name}"
+        mealkit.name == mealkit
+        puts "#{mealkit.name}"
+        puts ""
+        puts "----------- #{mealkit.name} - #{mealkit.cuisine} Cuisine -----------"
+        puts ""
+        #puts "Chef:              #{chef.name}"
         puts "Skill Level:       #{mealkit.skill_level}"
         puts "Food Category:     #{mealkit.food_category}"
         puts "Allergen:          #{mealkit.allergen}"
@@ -107,14 +107,14 @@ class ChefiliciousCliGem::CLI < ChefiliciousCliGem::Meal_Kits
      puts ""
 
      counter = 1
-     @@all.each do|famous_chef|
+     @@all_chefs.each do|famous_chef|
        famous_chef == chef.name
          until counter == 101
          puts "#{counter} - #{chef.name} - {chef.knowfor}"
          counter +=1
          puts ""
          puts ""
-         input = gets.strip
+         input.to_i = gets.strip
          display_chef_bio
        end
       end
@@ -133,7 +133,7 @@ class ChefiliciousCliGem::CLI < ChefiliciousCliGem::Meal_Kits
 
      def good_bye
       puts ""
-      puts "Would you like to see another meal kit?  Enter Y or N"
+      puts "Would you like to see more information?  Enter Y or N"
       input = gets.strip.downcase
       if input == "y"
         main_menu

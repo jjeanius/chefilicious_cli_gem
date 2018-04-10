@@ -1,6 +1,5 @@
 class Chefs
-
-  attr_accessor :name, :knowfor, :description, :chefs
+  attr_accessor :name, :knowfor, :description, :chefs, :chef_info
 
   @@all_chefs = []
 
@@ -8,7 +7,7 @@ class Chefs
     @@all_chefs
   end
 
-  def self.scrape_all
+  def self.scrape_all_chefs
     self.scrape_chefs
   end
 
@@ -16,8 +15,7 @@ class Chefs
     doc = Nokogiri::HTML(open("https://www.chefd.com/pages/our-chefs"))
     meal_kits_chefs = doc.css("div.section-width-limiter div#chefsGrid.chef-grid")
     meal_kits_chefs.each do|chef|
-      binding.pry
-      chef_info.new = chef
+      chef_info = self.new
       chef_info.name = chef.css("#chefsGrid").css("chef_name")
       chef_info.knowfor = chef.css("chef-description")
       chef_info.description = chef.css("p.description")

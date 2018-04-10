@@ -4,9 +4,9 @@ class ChefiliciousCliGem::CLI < ChefiliciousCliGem::Meal_Kits
     ChefiliciousCliGem::Meal_Kits.scrape_all
     puts "Welcome to the Chefilicious!"
     puts "A place where your culinary experience comes to life!"
-      start
-      main_menu
-    end
+    start
+    main_menu
+  end
 
     def start
       puts ""
@@ -28,20 +28,20 @@ class ChefiliciousCliGem::CLI < ChefiliciousCliGem::Meal_Kits
         when "1"
           display_meal_kits(meal_kits)
           mealkit = ChefiliciousCliGem::Meal_Kits.find_by_mealkit(input.to_i)
-          puts ""
-          display_mealkit_description
-          puts ""
-          good_bye
+            puts ""
+              display_mealkit_description
+                puts ""
+                  good_bye
 
         when "2"
           display_chefs(input)
-          puts ""
-          puts "please select a chef:"
-          input = gets.strip
-          mealkit = ChefiliciousCliGem::Meal_Kits.find_by_chef(input.to_i)
-          display_chef_bio
-          puts ""
-          good_bye
+            puts ""
+              puts "please select a chef:"
+                input = gets.strip
+                  mealkit = ChefiliciousCliGem::Meal_Kits.find_by_chef(input.to_i)
+                    display_chef_bio
+                      puts ""
+                        good_bye
 
         when "3"
           exit
@@ -63,11 +63,12 @@ class ChefiliciousCliGem::CLI < ChefiliciousCliGem::Meal_Kits
             @@all.each do |mealkit|
               mealkit.name == mealkit
                 puts "#{counter} - #{mealkit.name} - #{mealkit.cooking_time} - #{mealkit.skill_level} - #{mealkit.cuisine} - #{mealkit.price}"
-            counter += 1
-            until counter == 100
-            break
+                    until counter == 100
+                      counter += 1
+                      break
             end
           end
+
 
         puts "please select a Meal Kit:"
         input = gets.strip
@@ -77,9 +78,11 @@ class ChefiliciousCliGem::CLI < ChefiliciousCliGem::Meal_Kits
         puts ""
         puts ""
         @@all.each do |mealkit|
-        mealkit.name == mealkit
-        puts "------------- #{mealkit.name} - #{mealkit.cuisine} Cuisine ------------"
-        puts ""
+          mealkit.name == mealkit
+            puts "#{mealkit.name}"
+              puts ""
+                puts "----------- #{mealkit.name} - #{mealkit.cuisine} Cuisine -----------"
+                  puts ""
          #puts "Chef:              #{chef.name}"
         puts "Skill Level:       #{mealkit.skill_level}"
         puts "Food Category:     #{mealkit.food_category}"

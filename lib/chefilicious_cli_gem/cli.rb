@@ -105,7 +105,7 @@ class ChefiliciousCliGem::CLI < ChefiliciousCliGem::Meal_Kits
      puts ""
 
      counter = 1
-     @@all_chefs.each do|famous_chef|
+     Chefs.all.each do|famous_chef|
        famous_chef == chef.name
          until counter == 101
          puts "#{counter} - #{chef.name} - {chef.knowfor}"

@@ -106,7 +106,7 @@ class ChefiliciousCliGem::CLI < ChefiliciousCliGem::Meal_Kits
 
      counter = 1
      Chefs.all.each do|famous_chef|
-       famous_chef == chef.name
+       famous_chef == chef
          until counter == 101
          puts "#{counter} - #{chef.name} - {chef.knowfor}"
          counter +=1
@@ -119,6 +119,9 @@ class ChefiliciousCliGem::CLI < ChefiliciousCliGem::Meal_Kits
     end
 
     def display_chef_bio
+      Chefs.all.each do|famous_chef|
+        famous_chef == chef
+
       puts ""
       puts ""
       puts "---------------About #{chef.name}--------------"
@@ -127,6 +130,7 @@ class ChefiliciousCliGem::CLI < ChefiliciousCliGem::Meal_Kits
       puts ""
       good_bye
     end
+  end
 
      def good_bye
       puts ""

@@ -13,7 +13,7 @@ class Chefs
 
   def self.scrape_chefs
     doc = Nokogiri::HTML(open("https://www.chefd.com/pages/our-chefs"))
-    meal_kits_chefs = doc.css("#chefsGrid.chef-grid .chef-grid-item-wrapper")
+    meal_kits_chefs = doc.css("#chefsGrid.chef-grid .chef-grid-item-wrapper")  #doc.css("div.section-width-limiter div#chefsGrid.chef-grid")
     meal_kits_chefs.each do|chef|
       binding.pry
       chef_info = self.new
@@ -26,8 +26,9 @@ class Chefs
     end
   end
 
-  def self.find_by_chef
-    @@all_chefs.detect{|chefname|chefname == chef}
+  def self.find_by_chef(meal)
+    #@@all_chefs
+    @@all_chefs[meal.to_i-1]
     end
 
   def self.save

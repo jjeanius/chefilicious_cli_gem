@@ -91,7 +91,7 @@ class ChefiliciousCliGem::CLI < ChefiliciousCliGem::Meal_Kits
         puts "Price:             #{mealkit.price}"
         puts "Website:           #{mealkit.url}"
         puts ""
-        puts "------------------------------  Description  ------------------------------"
+        puts "------------------------------------------------------------"
         puts ""
       # puts "#{mealkit.description}"
         puts ""
@@ -126,7 +126,11 @@ class ChefiliciousCliGem::CLI < ChefiliciousCliGem::Meal_Kits
       puts ""
       puts "---------------About #{chef.name}--------------"
       puts ""
-      puts "#{chef.description}"
+      puts "Cuisine:      #{chef.knowfor}"
+      puts ""
+      puts "Know For:     #{chef.description}"
+      puts ""
+      puts "Website:      #{chef_info.url}"
       puts ""
       good_bye
     end

@@ -13,13 +13,13 @@ class Chefs
 
   def self.scrape_chefs
     doc = Nokogiri::HTML(open("https://www.chefd.com/pages/our-chefs"))
-    meal_kits_chefs = doc.css("div.section-width-limiter .chef-grid-item-wrapper")  #doc.css("div.section-width-limiter div#chefsGrid.chef-grid")
-    #binding.pry
+    meal_kits_chefs = doc.css("div.section-width-limiter #chefsGrid").text  #doc.css("div.section-width-limiter div#chefsGrid.chef-grid")
+    binding.pry
     sleep 10
     meal_kits_chefs.each do|chef|
-  binding.pry
+#  binding.pry
       chef_info = self.new
-      chef_info.name = chef.css(" .chef-details .chef-name").children.inner_html
+      chef_info.name = chef.css(".chef-details .chef-name")
       chef_info.cuisine = chef.css(".chef-description")
       chef_info.knowfor = chef.css(".chef-subtitle")
       chef_info.url = "https://www.chefd.com/collections/#{chef.css('a').attribute('href').text.strip}"

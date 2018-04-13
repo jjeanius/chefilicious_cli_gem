@@ -38,6 +38,7 @@ class ChefiliciousCliGem::CLI < ChefiliciousCliGem::Meal_Kits
           puts "Thank You! Have a wonderful day!"
           puts ""
           exit
+
         else
           puts "Please make a valid selection"
         end

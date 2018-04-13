@@ -35,6 +35,8 @@ class ChefiliciousCliGem::CLI < ChefiliciousCliGem::Meal_Kits
                 puts ""
                   good_bye
         when "2"
+          puts "Thank You! Have a wonderful day!"
+          puts ""
           exit
         else
           puts "Please make a valid selection"
@@ -43,6 +45,7 @@ class ChefiliciousCliGem::CLI < ChefiliciousCliGem::Meal_Kits
       end
 
       def display_meal_kits(meal_kits)
+
         puts ""
         puts "---------------------- Discover Your Options! ---------------------------------"
         puts ""
@@ -53,15 +56,15 @@ class ChefiliciousCliGem::CLI < ChefiliciousCliGem::Meal_Kits
             @@all.each do |mealkit|
               mealkit.name == mealkit
                 puts "#{counter} - #{mealkit.name} - #{mealkit.cooking_time} - #{mealkit.skill_level} - #{mealkit.cuisine} - #{mealkit.price}"
-                  until counter == 100
+                  until counter == 51
                     counter += 1
                     break
             end
           end
-        end
 
 
       def display_mealkit_description(mealkit)
+
         puts ""
         puts ""
         puts ""
@@ -81,6 +84,7 @@ class ChefiliciousCliGem::CLI < ChefiliciousCliGem::Meal_Kits
         puts ""
        good_bye
      end
+   end
 
      def good_bye
       puts ""
@@ -91,6 +95,7 @@ class ChefiliciousCliGem::CLI < ChefiliciousCliGem::Meal_Kits
       else
         puts ""
         puts "Thank You! Have a wonderful day!"
+        puts ""
         exit
       end
     end

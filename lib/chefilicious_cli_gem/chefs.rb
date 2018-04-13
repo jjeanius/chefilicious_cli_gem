@@ -1,4 +1,4 @@
-class Chefs
+class Chefs    # Future Enhancement
   attr_accessor :name, :knowfor, :cuisine, :chef, :chef_info
 
   @@all_chefs = []

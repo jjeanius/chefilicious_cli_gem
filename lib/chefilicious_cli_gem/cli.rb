@@ -2,7 +2,6 @@ class ChefiliciousCliGem::CLI < ChefiliciousCliGem::Meal_Kits
 
   def call
     ChefiliciousCliGem::Meal_Kits.scrape_all
-    Chefs.scrape_all_chefs
     puts "Welcome to the Chefilicious!"
     puts "A place where your culinary experience comes to life!"
     start
@@ -20,8 +19,7 @@ class ChefiliciousCliGem::CLI < ChefiliciousCliGem::Meal_Kits
       puts "What would you like more information on?"
       puts "
             1. Meal Kits
-            2. Our celebrity Chefs
-            3. Exit"
+            2. Exit"
 
       input = gets.strip.downcase
 
@@ -36,20 +34,8 @@ class ChefiliciousCliGem::CLI < ChefiliciousCliGem::Meal_Kits
               display_mealkit_description(mealkit)
                 puts ""
                   good_bye
-
         when "2"
-          display_chefs(input)
-            puts ""
-              puts "please select a chef:"
-                input = gets.strip
-                  mealkit_chef = Chefs.find_by_chef(input.to_i)
-                    display_chef_bio
-                      puts ""
-                        good_bye
-
-        when "3"
           exit
-
         else
           puts "Please make a valid selection"
         end
@@ -83,7 +69,6 @@ class ChefiliciousCliGem::CLI < ChefiliciousCliGem::Meal_Kits
         puts ""
         puts "----------- #{mealkit.name} - #{mealkit.cuisine} Cuisine -----------"
         puts ""
-        #puts "Chef:              #{chef.name}"
         puts "Skill Level:       #{mealkit.skill_level}"
         puts "Food Category:     #{mealkit.food_category}"
         puts "Allergen:          #{mealkit.allergen}"
@@ -93,48 +78,9 @@ class ChefiliciousCliGem::CLI < ChefiliciousCliGem::Meal_Kits
         puts ""
         puts "------------------------------------------------------------"
         puts ""
-      # puts "#{mealkit.description}"
         puts ""
        good_bye
      end
-
-
-    def display_chefs(chefs)
-     puts ""
-     puts "------------------- Our Famous Chefs ---------------------"
-     puts ""
-
-     counter = 1
-     Chefs.all.each do|famous_chef|
-       famous_chef == chef
-         until counter == 101
-         puts "#{counter} - #{chef.name} - {chef.knowfor}"
-         counter +=1
-         puts ""
-         puts ""
-         input.to_i = gets.strip
-         display_chef_bio
-       end
-      end
-    end
-
-    def display_chef_bio
-      Chefs.all.each do|famous_chef|
-        famous_chef == chef
-
-      puts ""
-      puts ""
-      puts "---------------About #{chef.name}--------------"
-      puts ""
-      puts "Cuisine:      #{chef.cuisine}"
-      puts ""
-      puts "Know For:     #{chef.knowfor}"
-      puts ""
-      puts "Website:      #{chef_info.url}"
-      puts ""
-      good_bye
-    end
-  end
 
      def good_bye
       puts ""

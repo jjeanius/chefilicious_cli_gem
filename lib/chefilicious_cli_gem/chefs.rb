@@ -14,8 +14,8 @@ class Chefs
   def self.scrape_chefs
     doc = Nokogiri::HTML(open("https://www.chefd.com/pages/our-chefs"))
     meal_kits_chefs = doc.css("div.section-width-limiter #chefsGrid").text  #doc.css("div.section-width-limiter div#chefsGrid.chef-grid")
-    binding.pry
-    sleep 10
+    #binding.pry
+
     meal_kits_chefs.each do|chef|
 #  binding.pry
       chef_info = self.new

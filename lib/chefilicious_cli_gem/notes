@@ -1,14 +1,14 @@
 Project: Chefilicious_CLI_Gem
 
-A command line interface that list 50 top meal kits from a non-subscription company (such as Chef D, Fresh Direct, Chefday...etc).  
-
+A command line interface that lists 50 top meal kits from a non-subscription company (such as Chef D, Fresh Direct, Chefday...etc).
 The application will allow the user to see the following information:
 
 * A list of best-selling 50 meal kits information and allow the user to make a product selection for each meal kit.
 
 * The application will scrape the information from a company website and it will have a link to connect the user to the website.
 
-* As for now, this application is scraping from Chef'd webiste.  
+* As for now, this application is scraping from Chef'd webiste.
+
   The URL info is listed below:
 
   Chef'd     URL:  https://www.chefd.com/collections/all?sort_by=best-selling
@@ -17,11 +17,13 @@ The application will allow the user to see the following information:
   CLI:
 
   * Greet the user
+
     "Welcome to the Chefilicious! A place where your culinary experience comes to life!"
 
   * The user will select a key to Start the program.
 
   * Main Menu - will allow the user to make the following selection
+
     1) Meal Kits
     2) Exit
 
@@ -34,14 +36,8 @@ Future improvements:
 
 * In the Main Menu, "Our Famous Chefs" will be listed as one of the choice.
 
-* When user select "Our Famous Chef", a list of chef names will appear and user can select the individual chef for more information. The user then can select a chef and information regarding to that chef will appear.  There will also be an individual chef's website link that user can be access and the meal kits that are created by this chef.
+* When user select "Our Famous Chef", a list of chef names will appear and user can select the individual chef for more information.
+The user then can select a chef and information regarding to that chef will appear.
+There will also be an individual chef's website link that user can be access and the meal kits that are created by this chef.
 
 * As of now the application is scrapig from Chef'd website.  For future enhancement, it will include other Websites such as Fresh Direct and Chefday.
-
-Websites:
-
-1) Fresh Direct
-   URL:  https://www.freshdirect.com/srch.jsp?pageType=search&searchParams=meal+kits&pageSize=30&all=false&activePage=0&sortBy=Sort_Relevancy&orderAsc=true&activeTab=product&departmentFilterGroup=clearall&brandFilterGroup=clearall
-
-2) Chefday
-     URL:  http://www.chefday.com/recipes

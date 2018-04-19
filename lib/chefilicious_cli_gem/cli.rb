@@ -1,4 +1,5 @@
-class ChefiliciousCliGem::CLI < ChefiliciousCliGem::Meal_Kits
+class ChefiliciousCliGem::CLI
+
 
   def call
     ChefiliciousCliGem::Meal_Kits.scrape_all
@@ -25,7 +26,7 @@ class ChefiliciousCliGem::CLI < ChefiliciousCliGem::Meal_Kits
 
       case input
         when "1"
-          display_meal_kits(meal_kits)
+          display_meal_kits
           puts "please select a Meal Kit:"
           input = gets.strip
 
@@ -45,8 +46,7 @@ class ChefiliciousCliGem::CLI < ChefiliciousCliGem::Meal_Kits
         main_menu
       end
 
-      def display_meal_kits(meal_kits)
-
+      def display_meal_kits
         puts ""
         puts "---------------------- Discover Your Options! ---------------------------------"
         puts ""
@@ -54,7 +54,7 @@ class ChefiliciousCliGem::CLI < ChefiliciousCliGem::Meal_Kits
         puts "--------------------------------------------------------------------------------"
 
         counter = 1
-            @@all.each do |mealkit|
+           ChefiliciousCliGem::Meal_Kits.all.each do |mealkit|
               mealkit.name == mealkit
                 puts "#{counter} - #{mealkit.name} - #{mealkit.cooking_time} - #{mealkit.skill_level} - #{mealkit.cuisine} - #{mealkit.price}"
                   until counter == 51
